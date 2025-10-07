@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/upload",
+      "description": "Upload CSV",
+      "input": {
+        "file": "binary"
+      },
+      "output": {
+        "dataset_id": "uuid"
+      },
+      "auth": {
+        "required": true,
+        "roles": [
+          "user"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/insights/:id",
+      "description": "Fetch insights",
+      "input": {},
+      "output": {
+        "insights": "array"
+      },
+      "auth": {
+        "required": false
+      }
+    }
+  ],
+  "extensions": {}
+}

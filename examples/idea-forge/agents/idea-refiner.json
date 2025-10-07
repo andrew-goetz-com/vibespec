@@ -1,0 +1,39 @@
+{
+  "name": "IdeaRefinerAgent",
+  "version": "1.0.0",
+  "role": "Expand selected idea into a structured proposal.",
+  "inputs": [
+    {
+      "name": "idea_choice",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "structured_idea",
+      "type": "object"
+    }
+  ],
+  "capabilities": [
+    "llm.transform"
+  ],
+  "tools": [
+    {
+      "name": "openai",
+      "type": "llm",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0.3
+      }
+    }
+  ],
+  "state": "stateless",
+  "config": {},
+  "security": {
+    "permissions": [
+      "secrets.read:OPENAI_API_KEY"
+    ]
+  },
+  "extensions": {}
+}

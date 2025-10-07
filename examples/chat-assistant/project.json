@@ -1,0 +1,19 @@
+{
+  "name": "ChatAssistant",
+  "description": "A simple conversational assistant with retrieval hooks.",
+  "tags": [
+    "ai",
+    "chat",
+    "assistant"
+  ],
+  "owner": "andrew-goetz",
+  "version": "0.1.0",
+  "license": "MIT",
+  "env": {
+    "required": [
+      "OPENAI_API_KEY"
+    ],
+    "optional": []
+  },
+  "extensions": {}
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Dataset",
+  "version": "1.0.0",
+  "fields": {
+    "id": {
+      "type": "uuid",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "columns": {
+      "type": "string[]"
+    },
+    "row_count": {
+      "type": "number"
+    }
+  },
+  "indexes": [],
+  "relations": [],
+  "extensions": {}
+}

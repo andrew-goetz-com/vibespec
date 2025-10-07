@@ -1,0 +1,34 @@
+{
+  "name": "UploadParserAgent",
+  "version": "1.0.0",
+  "role": "Parses CSV upload metadata and schema.",
+  "inputs": [
+    {
+      "name": "file_meta",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "table_schema",
+      "type": "object"
+    }
+  ],
+  "capabilities": [
+    "csv.parse"
+  ],
+  "tools": [
+    {
+      "name": "fs",
+      "type": "fs",
+      "config": {}
+    }
+  ],
+  "state": "stateless",
+  "config": {},
+  "security": {
+    "permissions": []
+  },
+  "extensions": {}
+}

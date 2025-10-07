@@ -1,0 +1,37 @@
+{
+  "frontend": {
+    "framework": "nextjs",
+    "language": "typescript"
+  },
+  "backend": {
+    "runtime": "node",
+    "framework": "express"
+  },
+  "database": {
+    "engine": "postgres",
+    "provider": "supabase"
+  },
+  "auth": {
+    "provider": "supabase",
+    "modes": [
+      "email_password"
+    ]
+  },
+  "storage": {
+    "provider": "supabase"
+  },
+  "deployment": {
+    "frontend": "vercel",
+    "backend": "aws-lambda",
+    "database": "supabase"
+  },
+  "dependencies": {
+    "npm": [
+      "openai",
+      "express",
+      "pg"
+    ],
+    "system": []
+  },
+  "extensions": {}
+}

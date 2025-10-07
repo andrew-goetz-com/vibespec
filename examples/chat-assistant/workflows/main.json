@@ -1,0 +1,44 @@
+{
+  "name": "Chat Flow",
+  "version": "1.0.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "parse",
+        "agent": "PromptParserAgent"
+      },
+      {
+        "id": "chat",
+        "agent": "ChatEngineAgent"
+      }
+    ],
+    "edges": [
+      {
+        "from": "parse",
+        "to": "chat"
+      }
+    ]
+  },
+  "io": {
+    "inputs": [
+      {
+        "name": "user_message",
+        "type": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "assistant_message",
+        "type": "string"
+      }
+    ]
+  },
+  "error_handling": {
+    "retry": {
+      "max_attempts": 1,
+      "backoff_ms": 250
+    },
+    "fallbacks": []
+  },
+  "extensions": {}
+}

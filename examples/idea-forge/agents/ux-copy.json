@@ -1,0 +1,39 @@
+{
+  "name": "UXCopyAgent",
+  "version": "1.0.0",
+  "role": "Generate human-friendly summaries, titles, and calls-to-action.",
+  "inputs": [
+    {
+      "name": "structured_idea",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "copy",
+      "type": "object"
+    }
+  ],
+  "capabilities": [
+    "llm.generate"
+  ],
+  "tools": [
+    {
+      "name": "openai",
+      "type": "llm",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0.6
+      }
+    }
+  ],
+  "state": "stateless",
+  "config": {},
+  "security": {
+    "permissions": [
+      "secrets.read:OPENAI_API_KEY"
+    ]
+  },
+  "extensions": {}
+}

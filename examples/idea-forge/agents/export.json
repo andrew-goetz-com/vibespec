@@ -1,0 +1,40 @@
+{
+  "name": "ExportAgent",
+  "version": "1.0.0",
+  "role": "Export a completed artifact and produce a download URL.",
+  "inputs": [
+    {
+      "name": "copy",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "artifact",
+      "type": "file"
+    }
+  ],
+  "capabilities": [
+    "fs.export"
+  ],
+  "tools": [
+    {
+      "name": "fs",
+      "type": "fs",
+      "config": {}
+    }
+  ],
+  "state": "stateless",
+  "config": {
+    "formats": [
+      "pdf",
+      "md",
+      "json"
+    ]
+  },
+  "security": {
+    "permissions": []
+  },
+  "extensions": {}
+}

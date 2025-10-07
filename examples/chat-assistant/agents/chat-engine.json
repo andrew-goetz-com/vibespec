@@ -1,0 +1,40 @@
+{
+  "name": "ChatEngineAgent",
+  "version": "1.0.0",
+  "role": "Maintains chat state and routes to tools.",
+  "inputs": [
+    {
+      "name": "user_message",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "assistant_message",
+      "type": "string"
+    }
+  ],
+  "capabilities": [
+    "llm.generate",
+    "memory.buffer"
+  ],
+  "tools": [
+    {
+      "name": "openai",
+      "type": "llm",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0.5
+      }
+    }
+  ],
+  "state": "ephemeral",
+  "config": {},
+  "security": {
+    "permissions": [
+      "secrets.read:OPENAI_API_KEY"
+    ]
+  },
+  "extensions": {}
+}

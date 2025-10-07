@@ -1,0 +1,15 @@
+{
+  "vibespec_version": "0.1.0",
+  "project": "./project.json",
+  "architecture": "./architecture.json",
+  "paths": {
+    "agents": "./agents",
+    "workflows": "./workflows",
+    "data_models": "./data-models",
+    "api": "./api",
+    "ui": "./ui",
+    "deployment": "./deployment",
+    "schemas": "../../schemas"
+  },
+  "extensions": {}
+}

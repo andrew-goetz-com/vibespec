@@ -1,0 +1,44 @@
+{
+  "name": "Analysis Flow",
+  "version": "1.0.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "upload",
+        "agent": "UploadParserAgent"
+      },
+      {
+        "id": "insight",
+        "agent": "InsightGeneratorAgent"
+      }
+    ],
+    "edges": [
+      {
+        "from": "upload",
+        "to": "insight"
+      }
+    ]
+  },
+  "io": {
+    "inputs": [
+      {
+        "name": "file_meta",
+        "type": "object"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "insights",
+        "type": "array"
+      }
+    ]
+  },
+  "error_handling": {
+    "retry": {
+      "max_attempts": 2,
+      "backoff_ms": 300
+    },
+    "fallbacks": []
+  },
+  "extensions": {}
+}

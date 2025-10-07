@@ -1,0 +1,46 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/architecture.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "frontend": {
+      "type": "object"
+    },
+    "backend": {
+      "type": "object"
+    },
+    "database": {
+      "type": "object"
+    },
+    "auth": {
+      "type": "object"
+    },
+    "storage": {
+      "type": "object"
+    },
+    "deployment": {
+      "type": "object"
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "npm": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "system": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  }
+}

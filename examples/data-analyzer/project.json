@@ -1,0 +1,19 @@
+{
+  "name": "DataAnalyzer",
+  "description": "Uploads CSV files, summarizes columns, and generates insights.",
+  "tags": [
+    "ai",
+    "data",
+    "etl"
+  ],
+  "owner": "andrew-goetz",
+  "version": "0.1.0",
+  "license": "MIT",
+  "env": {
+    "required": [
+      "OPENAI_API_KEY"
+    ],
+    "optional": []
+  },
+  "extensions": {}
+}

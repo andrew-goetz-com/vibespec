@@ -1,0 +1,40 @@
+{
+  "name": "InsightGeneratorAgent",
+  "version": "1.0.0",
+  "role": "Generates statistical summaries and insights.",
+  "inputs": [
+    {
+      "name": "table_schema",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "insights",
+      "type": "array"
+    }
+  ],
+  "capabilities": [
+    "llm.generate",
+    "stats.summary"
+  ],
+  "tools": [
+    {
+      "name": "openai",
+      "type": "llm",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0.3
+      }
+    }
+  ],
+  "state": "stateless",
+  "config": {},
+  "security": {
+    "permissions": [
+      "secrets.read:OPENAI_API_KEY"
+    ]
+  },
+  "extensions": {}
+}

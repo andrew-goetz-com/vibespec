@@ -1,0 +1,61 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "vibespec_version",
+    "project",
+    "architecture",
+    "paths"
+  ],
+  "properties": {
+    "vibespec_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "project": {
+      "type": "string"
+    },
+    "architecture": {
+      "type": "string"
+    },
+    "paths": {
+      "type": "object",
+      "required": [
+        "agents",
+        "workflows",
+        "data_models",
+        "api",
+        "schemas"
+      ],
+      "properties": {
+        "agents": {
+          "type": "string"
+        },
+        "workflows": {
+          "type": "string"
+        },
+        "data_models": {
+          "type": "string"
+        },
+        "api": {
+          "type": "string"
+        },
+        "ui": {
+          "type": "string"
+        },
+        "deployment": {
+          "type": "string"
+        },
+        "schemas": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

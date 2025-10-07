@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "description": "Send a message",
+      "input": {
+        "content": "string"
+      },
+      "output": {
+        "reply": "string"
+      },
+      "auth": {
+        "required": false
+      }
+    }
+  ],
+  "extensions": {}
+}

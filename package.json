@@ -1,0 +1,14 @@
+{
+  "name": "vibespec",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VibeSpec \u2014 a spec-first standard for agentic software.",
+  "homepage": "https://vibespec.vibecodeunited.com",
+  "scripts": {
+    "validate": "node tools/validate.js"
+  },
+  "devDependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1"
+  }
+}
