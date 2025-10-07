@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/agent.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent",
+  "vibespecVersion": "0.1.0",
+  "description": "Describes an agent’s identity, capabilities, IO, tools, and security.",
   "type": "object",
   "required": [
     "name",

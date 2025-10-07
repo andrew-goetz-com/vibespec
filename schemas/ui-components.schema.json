@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/ui-components.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Components",
+  "vibespecVersion": "0.1.0",
+  "description": "Structures UI pages, components, layouts, and props schemas.",
   "type": "object",
   "properties": {
     "theme": {

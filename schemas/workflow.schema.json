@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/workflow.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow",
+  "vibespecVersion": "0.1.0",
+  "description": "Specifies agent orchestration, graph structure, IO, and error handling.",
   "type": "object",
   "required": [
     "name",

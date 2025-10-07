@@ -1,0 +1,41 @@
+{
+  "name": "IdeaGeneratorAgent",
+  "version": "1.0.0",
+  "role": "Generate idea proposals from structured prompt.",
+  "inputs": [
+    {
+      "name": "structured_prompt",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "idea_list",
+      "type": "array"
+    }
+  ],
+  "capabilities": [
+    "llm.generate"
+  ],
+  "tools": [
+    {
+      "name": "openai",
+      "type": "llm",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0.7
+      }
+    }
+  ],
+  "state": "stateless",
+  "config": {
+    "n": 5
+  },
+  "security": {
+    "permissions": [
+      "secrets.read:OPENAI_API_KEY"
+    ]
+  },
+  "extensions": {}
+}

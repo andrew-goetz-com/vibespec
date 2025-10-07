@@ -1,0 +1,39 @@
+{
+  "name": "PlannerAgent",
+  "version": "0.2.0",
+  "role": "Break user goals into executable subtasks.",
+  "inputs": [
+    {
+      "name": "goals",
+      "type": "object",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "tasks",
+      "type": "array"
+    }
+  ],
+  "capabilities": [
+    "llm.transform"
+  ],
+  "tools": [
+    {
+      "name": "openai",
+      "type": "llm",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0.2
+      }
+    }
+  ],
+  "state": "stateless",
+  "config": {},
+  "security": {
+    "permissions": [
+      "secrets.read:OPENAI_API_KEY"
+    ]
+  },
+  "extensions": {}
+}

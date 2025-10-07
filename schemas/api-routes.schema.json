@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/api-routes.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "API Routes",
+  "vibespecVersion": "0.1.0",
+  "description": "Declares backend endpoints, contracts, IO shapes, and auth.",
   "type": "object",
   "required": [
     "routes"

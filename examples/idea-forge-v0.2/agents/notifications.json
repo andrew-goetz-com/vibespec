@@ -1,0 +1,45 @@
+{
+  "name": "NotificationsAgent",
+  "version": "0.2.0",
+  "role": "Post workflow status updates to Slack.",
+  "inputs": [
+    {
+      "name": "message",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "object"
+    }
+  ],
+  "capabilities": [
+    "http.request"
+  ],
+  "tools": [
+    {
+      "name": "slack_webhook",
+      "type": "http",
+      "config": {
+        "method": "POST",
+        "url_env": "SLACK_WEBHOOK_URL",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body_template": {
+          "text": "{{message}}"
+        }
+      }
+    }
+  ],
+  "state": "stateless",
+  "config": {},
+  "security": {
+    "permissions": [
+      "secrets.read:SLACK_WEBHOOK_URL"
+    ]
+  },
+  "extensions": {}
+}

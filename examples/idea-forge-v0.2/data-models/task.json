@@ -1,0 +1,24 @@
+{
+  "name": "Task",
+  "version": "0.2.0",
+  "fields": {
+    "id": {
+      "type": "uuid",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    },
+    "due_date": {
+      "type": "string"
+    }
+  },
+  "indexes": [],
+  "relations": [],
+  "extensions": {}
+}

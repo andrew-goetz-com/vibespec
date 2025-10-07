@@ -1,0 +1,84 @@
+{
+  "name": "Idea Creation Flow",
+  "version": "1.1.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "parse",
+        "agent": "PromptParserAgent"
+      },
+      {
+        "id": "plan",
+        "agent": "PlannerAgent"
+      },
+      {
+        "id": "generate",
+        "agent": "IdeaGeneratorAgent"
+      },
+      {
+        "id": "refine",
+        "agent": "IdeaRefinerAgent"
+      },
+      {
+        "id": "copy",
+        "agent": "UXCopyAgent"
+      },
+      {
+        "id": "export",
+        "agent": "ExportAgent"
+      },
+      {
+        "id": "notify",
+        "agent": "NotificationsAgent"
+      }
+    ],
+    "edges": [
+      {
+        "from": "parse",
+        "to": "plan"
+      },
+      {
+        "from": "plan",
+        "to": "generate"
+      },
+      {
+        "from": "generate",
+        "to": "refine"
+      },
+      {
+        "from": "refine",
+        "to": "copy"
+      },
+      {
+        "from": "copy",
+        "to": "export"
+      },
+      {
+        "from": "export",
+        "to": "notify"
+      }
+    ]
+  },
+  "io": {
+    "inputs": [
+      {
+        "name": "raw_text",
+        "type": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "artifact",
+        "type": "file"
+      }
+    ]
+  },
+  "error_handling": {
+    "retry": {
+      "max_attempts": 2,
+      "backoff_ms": 500
+    },
+    "fallbacks": []
+  },
+  "extensions": {}
+}

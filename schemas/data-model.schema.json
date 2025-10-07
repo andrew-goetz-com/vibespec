@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/data-model.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Model",
+  "vibespecVersion": "0.1.0",
+  "description": "Defines data entities, fields, indexes, and relations used by the project.",
   "type": "object",
   "required": [
     "name",

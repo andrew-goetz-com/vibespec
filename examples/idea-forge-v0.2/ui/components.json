@@ -1,0 +1,45 @@
+{
+  "theme": {
+    "name": "glass",
+    "primary": "#00e0d1",
+    "radius": 16
+  },
+  "pages": [
+    {
+      "id": "home",
+      "route": "/",
+      "layout": "centered",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "title": "IdeaForge",
+            "subtitle": "Turn sparks into startups."
+          }
+        },
+        {
+          "type": "idea-input",
+          "props": {
+            "placeholder": "Describe your idea..."
+          }
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "type": "hero",
+      "props_schema": {
+        "title": "string",
+        "subtitle": "string"
+      }
+    },
+    {
+      "type": "idea-input",
+      "props_schema": {
+        "placeholder": "string"
+      }
+    }
+  ],
+  "extensions": {}
+}

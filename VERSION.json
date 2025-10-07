@@ -1,0 +1,10 @@
+{
+    "name": "VibeSpec",
+    "version": "0.1.0",
+    "releaseDate": "2025-10-06",
+    "status": "draft",
+    "specUrl": "https://vibespec.vibecodeunited.com",
+    "schemas": "https://vibespec.vibecodeunited.com/schema/",
+    "description": "VibeSpec is an open standard for AI-driven software generation. It defines machine-readable specifications for agents, workflows, APIs, data models, UI components, and deployment."
+  }
+  

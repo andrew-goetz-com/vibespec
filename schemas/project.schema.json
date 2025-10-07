@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/project.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project",
+  "vibespecVersion": "0.1.0",
+  "description": "Captures project-level metadata, version, tags, env config, and extensions.",
   "type": "object",
   "required": [
     "name",

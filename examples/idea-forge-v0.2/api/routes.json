@@ -1,0 +1,37 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/idea",
+      "description": "Submit a new idea",
+      "input": {
+        "text": "string"
+      },
+      "output": {
+        "ideas": "Idea[]"
+      },
+      "auth": {
+        "required": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/export",
+      "description": "Export a document",
+      "input": {
+        "idea_id": "uuid",
+        "format": "pdf|md|json"
+      },
+      "output": {
+        "url": "string"
+      },
+      "auth": {
+        "required": true,
+        "roles": [
+          "user"
+        ]
+      }
+    }
+  ],
+  "extensions": {}
+}

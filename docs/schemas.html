@@ -13,5 +13,18 @@
   <li><code>ui-components.schema.json</code></li>
   <li><code>deployment.schema.json</code></li>
 </ul>
+<p><strong>Schema metadata</strong>: Each schema includes self-describing metadata for versioning and tool compatibility:</p>
+<pre><code>{
+  "$id": "https://vibespec.vibecodeunited.com/schema/&lt;file&gt;.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Descriptive Title",
+  "vibespecVersion": "0.1.0"
+}</code></pre>
+<ul>
+  <li><code>$id</code> is the canonical, unique URL for the schema.</li>
+  <li><code>$schema</code> is always <code>https://json-schema.org/draft/2020-12/schema</code>.</li>
+  <li><code>title</code> names the schema (e.g., Manifest, Agent, Workflow).</li>
+  <li><code>vibespecVersion</code> matches <code>VERSION.json</code> for auto-discovery and compatibility checks.</li>
+</ul>
 <p>Use <code>npm install</code> and <code>npm run validate</code> to verify example projects.</p>
 </body></html>

@@ -1,0 +1,21 @@
+{
+  "name": "IdeaForge",
+  "description": "An AI-powered platform that helps users brainstorm and refine ideas into actionable projects.",
+  "tags": [
+    "ai",
+    "ideas",
+    "productivity"
+  ],
+  "owner": "andrew-goetz",
+  "version": "0.2.0",
+  "license": "MIT",
+  "env": {
+    "required": [
+      "OPENAI_API_KEY"
+    ],
+    "optional": [
+      "SLACK_WEBHOOK_URL"
+    ]
+  },
+  "extensions": {}
+}

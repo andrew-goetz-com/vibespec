@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/architecture.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Architecture",
+  "vibespecVersion": "0.1.0",
+  "description": "Outlines frontend, backend, data, auth, storage, deployment, and dependencies.",
   "type": "object",
   "properties": {
     "frontend": {

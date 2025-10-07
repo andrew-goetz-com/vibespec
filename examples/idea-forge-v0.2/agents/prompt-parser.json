@@ -1,0 +1,31 @@
+{
+  "name": "PromptParserAgent",
+  "version": "1.0.0",
+  "role": "Parses user input into structured intent for downstream agents.",
+  "inputs": [
+    {
+      "name": "raw_text",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "structured_prompt",
+      "type": "object"
+    }
+  ],
+  "capabilities": [
+    "nlp.parse",
+    "intent.extract"
+  ],
+  "tools": [],
+  "state": "stateless",
+  "config": {
+    "max_tokens": 2048
+  },
+  "security": {
+    "permissions": []
+  },
+  "extensions": {}
+}

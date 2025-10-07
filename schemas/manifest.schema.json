@@ -1,6 +1,9 @@
 {
   "$id": "https://vibespec.vibecodeunited.com/schema/manifest.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Manifest",
+  "vibespecVersion": "0.1.0",
+  "description": "Defines core project metadata, configuration, and structure for a VibeSpec project.",
   "type": "object",
   "required": [
     "vibespec_version",

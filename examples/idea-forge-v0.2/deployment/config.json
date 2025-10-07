@@ -1,0 +1,22 @@
+{
+  "environments": [
+    {
+      "name": "prod",
+      "domains": {
+        "frontend": "app.example.com",
+        "api": "api.example.com"
+      },
+      "ci": {
+        "provider": "github-actions",
+        "workflows": [
+          "build",
+          "deploy"
+        ]
+      },
+      "secrets": [
+        "OPENAI_API_KEY"
+      ]
+    }
+  ],
+  "extensions": {}
+}

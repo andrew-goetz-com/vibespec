@@ -1,0 +1,43 @@
+{
+  "name": "Idea",
+  "version": "1.0.0",
+  "fields": {
+    "id": {
+      "type": "uuid",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "problem": {
+      "type": "string"
+    },
+    "solution": {
+      "type": "string"
+    },
+    "target_audience": {
+      "type": "string"
+    },
+    "business_model": {
+      "type": "string"
+    },
+    "competitors": {
+      "type": "string[]"
+    },
+    "score": {
+      "type": "object",
+      "shape": {
+        "feasibility": "number",
+        "originality": "number",
+        "value": "number"
+      }
+    }
+  },
+  "indexes": [],
+  "relations": [],
+  "extensions": {}
+}
