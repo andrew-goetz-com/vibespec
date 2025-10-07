@@ -35,21 +35,6 @@ try {
 } catch (e) {
   console.warn('[validate] Optional schema preload failed for design-tokens.schema.json:', e?.message || e);
 }
-<<<<<<< HEAD
-try {
-  const uiBrief = loadSchema('ui-brief.schema.json');
-  ajv.addSchema(uiBrief); // $id: https://vibespec.vibecodeunited.com/schema/ui-brief.schema.json
-} catch (e) {
-  console.warn('[validate] Optional schema preload failed for ui-brief.schema.json:', e?.message || e);
-}
-try {
-  const adapters = loadSchema('adapters.schema.json');
-  ajv.addSchema(adapters); // $id: https://vibespec.vibecodeunited.com/schema/adapters.schema.json
-} catch (e) {
-  console.warn('[validate] Optional schema preload failed for adapters.schema.json:', e?.message || e);
-}
-=======
->>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
 
 // Preload additional schemas referenced by absolute $id so cross-$ref resolution works
 const optionalSchemas = [
@@ -59,6 +44,7 @@ const optionalSchemas = [
   'accessibility.schema.json',
   'ui-intent.schema.json',
   'ui-brief.schema.json',
+  'adapters.schema.json',
 ];
 
 for (const schemaName of optionalSchemas) {
