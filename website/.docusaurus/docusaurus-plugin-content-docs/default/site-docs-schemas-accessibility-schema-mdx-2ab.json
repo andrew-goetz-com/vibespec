@@ -38,7 +38,12 @@
     "permalink": "/category/schemas"
   },
   "next": {
+<<<<<<< HEAD
     "title": "Adapters",
     "permalink": "/schemas/adapters"
+=======
+    "title": "Agent",
+    "permalink": "/schemas/agent"
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
   }
 }
