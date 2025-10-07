@@ -8,7 +8,8 @@
     "validate": "node tools/validate.js",
     "docs:generate": "node tools/generate-docs.js",
     "site:dev": "cd website && npx docusaurus start",
-    "site:build": "npm run docs:generate && cd website && npx docusaurus build --out-dir ../docs"
+    "site:install": "npm ci --prefix website",
+    "site:build": "npm run docs:generate && npm run site:install && cd website && npx docusaurus build --out-dir ../docs"
   },
   "devDependencies": {
     "ajv": "^8.12.0",
