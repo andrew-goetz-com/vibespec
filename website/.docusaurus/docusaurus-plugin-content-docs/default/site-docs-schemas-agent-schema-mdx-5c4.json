@@ -34,8 +34,13 @@
   },
   "sidebar": "sidebar",
   "previous": {
+<<<<<<< HEAD
     "title": "Adapters",
     "permalink": "/schemas/adapters"
+=======
+    "title": "Accessibility",
+    "permalink": "/schemas/accessibility"
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
   },
   "next": {
     "title": "API Routes",

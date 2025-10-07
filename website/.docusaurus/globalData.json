@@ -61,11 +61,14 @@
               "sidebar": "sidebar"
             },
             {
+<<<<<<< HEAD
               "id": "schemas/adapters",
               "path": "/schemas/adapters",
               "sidebar": "sidebar"
             },
             {
+=======
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
               "id": "schemas/agent",
               "path": "/schemas/agent",
               "sidebar": "sidebar"

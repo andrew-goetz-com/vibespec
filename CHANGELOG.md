@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+<<<<<<< HEAD
 ## [0.2.1] - 2025-10-07
 
 ### ✨ Added
@@ -36,6 +37,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 - Updated validator to preload cross-referenced schemas by $id:
   - [validate.js](tools/validate.js:18) preloads tokens/layout/interaction/motion/accessibility/ui-intent/ui-brief for cross-$ref resolution.
 
+=======
+## [0.2.0] - 2025-10-07
+
+### ✨ Added
+- Introduced stack-agnostic, intent-first UI/UX Core:
+  - New schemas:
+    - `design-tokens.schema.json` – W3C-style tokens with themes/modes/brands and aliasing.
+    - `layout.schema.json` – Stack/Cluster/Grid/Frame primitives with constraints and responsive overrides.
+    - `interaction.schema.json` – Events, guards, keyboard/gesture mappings, typed actions, optional state machine.
+    - `motion.schema.json` – Tween/spring/keyframes, choreography, reduced-motion.
+    - `accessibility.schema.json` – Roles, ARIA, landmarks, keyboard maps, focus management, contrast targets.
+    - `ui-intent.schema.json` – UI intent taxonomy so authors specify purpose (e.g., Action.Primary, Selection.Multiple) instead of concrete widgets.
+    - `ui-brief.schema.json` – High-level brief (goals, innovation level, freedoms, perf budgets) to keep spec simple and future-proof.
+- Updated validator to preload cross-referenced schemas by $id:
+  - [validate.js](tools/validate.js:18) preloads tokens/layout/interaction/motion/accessibility/ui-intent/ui-brief for cross-$ref resolution.
+
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
 ### 🔄 Changed
 - Refactored [ui-components.schema.json](schemas/ui-components.schema.json:1) to v0.2.0:
   - Added `brief` (references `ui-brief.schema.json`) for high-level guidance.

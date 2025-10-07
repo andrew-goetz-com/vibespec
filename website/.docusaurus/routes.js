@@ -14,11 +14,19 @@ export default [
   },
   {
     path: '/',
+<<<<<<< HEAD
     component: ComponentCreator('/', 'b05'),
     routes: [
       {
         path: '/',
         component: ComponentCreator('/', '3e7'),
+=======
+    component: ComponentCreator('/', '9cf'),
+    routes: [
+      {
+        path: '/',
+        component: ComponentCreator('/', '842'),
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
         routes: [
           {
             path: '/tags',
@@ -67,7 +75,11 @@ export default [
           },
           {
             path: '/',
+<<<<<<< HEAD
             component: ComponentCreator('/', 'f4b'),
+=======
+            component: ComponentCreator('/', '78f'),
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
             routes: [
               {
                 path: '/category/examples',
@@ -148,12 +160,15 @@ export default [
                 sidebar: "sidebar"
               },
               {
+<<<<<<< HEAD
                 path: '/schemas/adapters',
                 component: ComponentCreator('/schemas/adapters', 'aa7'),
                 exact: true,
                 sidebar: "sidebar"
               },
               {
+=======
+>>>>>>> 5fe31c4a71e3f13eaa4743466777813a3174009b
                 path: '/schemas/agent',
                 component: ComponentCreator('/schemas/agent', '672'),
                 exact: true,
