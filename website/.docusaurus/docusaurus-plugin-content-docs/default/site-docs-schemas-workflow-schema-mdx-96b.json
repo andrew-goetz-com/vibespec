@@ -34,8 +34,8 @@
   },
   "sidebar": "sidebar",
   "previous": {
-    "title": "UI Components",
-    "permalink": "/schemas/ui-components"
+    "title": "UI Intent",
+    "permalink": "/schemas/ui-intent"
   },
   "next": {
     "title": "Examples",

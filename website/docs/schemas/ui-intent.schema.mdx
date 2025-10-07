@@ -1,0 +1,305 @@
+---
+id: "ui-intent"
+title: "UI Intent"
+description: "Stack-agnostic UI intent taxonomy so agents pick the right kind of component (purpose) without naming concrete widgets."
+slug: "/schemas/ui-intent"
+tags: ["schema", "v0.2.0"]
+---
+
+Stack-agnostic UI intent taxonomy so agents pick the right kind of component (purpose) without naming concrete widgets.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/ui-intent.schema.json` |
+| vibespecVersion | `0.2.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/ui-intent.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/ui-intent.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Intent",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic UI intent taxonomy so agents pick the right kind of component (purpose) without naming concrete widgets.",
+  "type": "object",
+  "properties": {
+    "presets": {
+      "type": "array",
+      "description": "Optional library of named intents for reuse.",
+      "items": {
+        "$ref": "#/$defs/IntentUsage"
+      },
+      "default": []
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "IntentCategory": {
+      "type": "string",
+      "enum": [
+        "Navigation",
+        "Action",
+        "Input",
+        "Selection",
+        "Disclosure",
+        "Collection",
+        "Feedback",
+        "Content",
+        "Container",
+        "Media",
+        "DataViz",
+        "Utility"
+      ]
+    },
+    "IntentName": {
+      "type": "string",
+      "enum": [
+        "Navigation.Primary",
+        "Navigation.Secondary",
+        "Navigation.Breadcrumbs",
+        "Navigation.Sidebar",
+        "Navigation.Tabs",
+        "Action.Primary",
+        "Action.Secondary",
+        "Action.Tertiary",
+        "Action.Destructive",
+        "Input.Text.SingleLine",
+        "Input.Text.MultiLine",
+        "Input.Number",
+        "Input.Password",
+        "Input.Search",
+        "Input.Date",
+        "Input.Time",
+        "Input.Email",
+        "Input.URL",
+        "Input.Phone",
+        "Selection.Single",
+        "Selection.Multiple",
+        "Selection.Toggle",
+        "Selection.Binary",
+        "Selection.OptionGroup",
+        "Disclosure.Accordion",
+        "Disclosure.Tab",
+        "Disclosure.Tooltip",
+        "Disclosure.Popover",
+        "Disclosure.Modal",
+        "Disclosure.Drawer",
+        "Collection.List",
+        "Collection.Table",
+        "Collection.Grid",
+        "Collection.Cards",
+        "Collection.Tree",
+        "Feedback.Inline",
+        "Feedback.Toast",
+        "Feedback.Dialog",
+        "Feedback.Skeleton",
+        "Feedback.EmptyState",
+        "Feedback.Progress",
+        "Content.Heading",
+        "Content.Paragraph",
+        "Content.Code",
+        "Content.Quote",
+        "Content.Badge",
+        "Content.Avatar",
+        "Container.Surface",
+        "Container.Card",
+        "Container.Panel",
+        "Container.Section",
+        "Media.Image",
+        "Media.Video",
+        "Media.Icon",
+        "DataViz.Metric",
+        "DataViz.Sparkline",
+        "DataViz.Bar",
+        "DataViz.Line",
+        "DataViz.Pie",
+        "Utility.Search",
+        "Utility.Filter",
+        "Utility.Sort",
+        "Utility.Pagination",
+        "Utility.Toolbar"
+      ]
+    },
+    "Emphasis": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "Density": {
+      "type": "string",
+      "enum": [
+        "comfortable",
+        "compact",
+        "sparse"
+      ]
+    },
+    "HierarchyLevel": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "DataType": {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "integer",
+        "float",
+        "date",
+        "datetime",
+        "time",
+        "email",
+        "url",
+        "phone",
+        "password",
+        "search"
+      ]
+    },
+    "FeedbackType": {
+      "type": "string",
+      "enum": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "loading",
+        "progress"
+      ]
+    },
+    "Multiplicity": {
+      "type": "string",
+      "enum": [
+        "single",
+        "multiple"
+      ]
+    },
+    "Affordance": {
+      "type": "string",
+      "enum": [
+        "click",
+        "tap",
+        "hover",
+        "drag",
+        "drop",
+        "keyboard",
+        "gesture"
+      ]
+    },
+    "Constraints": {
+      "type": "object",
+      "properties": {
+        "minLength": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxLength": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number"
+        },
+        "precision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "IntentSpec": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/IntentName"
+        },
+        "category": {
+          "$ref": "#/$defs/IntentCategory"
+        },
+        "description": {
+          "type": "string"
+        },
+        "emphasis": {
+          "$ref": "#/$defs/Emphasis"
+        },
+        "hierarchy": {
+          "$ref": "#/$defs/HierarchyLevel"
+        },
+        "density": {
+          "$ref": "#/$defs/Density"
+        },
+        "affordances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Affordance"
+          }
+        },
+        "priority": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "dataType": {
+          "$ref": "#/$defs/DataType"
+        },
+        "multiplicity": {
+          "$ref": "#/$defs/Multiplicity"
+        },
+        "constraints": {
+          "$ref": "#/$defs/Constraints"
+        },
+        "feedback": {
+          "$ref": "#/$defs/FeedbackType"
+        },
+        "mappingHints": {
+          "type": "array",
+          "description": "Optional adapter hints (e.g., 'button','link','iconButton','select'). Not part of the spec semantics.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IntentUsage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "intent": {
+          "$ref": "#/$defs/IntentSpec"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntentSpec"
+          }
+        }
+      },
+      "required": [
+        "intent"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```

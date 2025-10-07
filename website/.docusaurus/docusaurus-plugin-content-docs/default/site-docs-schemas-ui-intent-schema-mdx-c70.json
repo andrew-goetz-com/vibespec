@@ -1,0 +1,44 @@
+{
+  "id": "schemas/ui-intent",
+  "title": "UI Intent",
+  "description": "Stack-agnostic UI intent taxonomy so agents pick the right kind of component (purpose) without naming concrete widgets.",
+  "source": "@site/docs/schemas/ui-intent.schema.mdx",
+  "sourceDirName": "schemas",
+  "slug": "/schemas/ui-intent",
+  "permalink": "/schemas/ui-intent",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/ui-intent.schema.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "schema",
+      "permalink": "/tags/schema"
+    },
+    {
+      "inline": true,
+      "label": "v0.2.0",
+      "permalink": "/tags/v-0-2-0"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "ui-intent",
+    "title": "UI Intent",
+    "description": "Stack-agnostic UI intent taxonomy so agents pick the right kind of component (purpose) without naming concrete widgets.",
+    "slug": "/schemas/ui-intent",
+    "tags": [
+      "schema",
+      "v0.2.0"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "UI Components",
+    "permalink": "/schemas/ui-components"
+  },
+  "next": {
+    "title": "Workflow",
+    "permalink": "/schemas/workflow"
+  }
+}

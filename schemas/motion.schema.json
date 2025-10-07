@@ -1,0 +1,88 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/motion.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motion",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic motion model: transitions (tween/spring/keyframes), choreography (stagger/order/overlap), presets, and reduced-motion behavior.",
+  "type": "object",
+  "properties": {
+    "presets": {
+      "type": "object",
+      "description": "Named motion presets reusable across components/pages.",
+      "additionalProperties": { "$ref": "#/$defs/MotionSpec" }
+    },
+    "defaults": { "$ref": "#/$defs/MotionSpec" },
+    "extensions": { "type": "object" }
+  },
+  "$defs": {
+    "TokenRef": {
+      "type": "string",
+      "pattern": "^\\{[a-zA-Z0-9_.-]+\\}$",
+      "description": "Reference to a design token path, e.g., {motion.duration.md} or {easing.standard}."
+    },
+    "Time": { "oneOf": [ { "type": "number" }, { "$ref": "#/$defs/TokenRef" } ] },
+    "Easing": { "oneOf": [ { "type": "string" }, { "$ref": "#/$defs/TokenRef" } ] },
+    "Spring": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "stiffness": { "type": "number" },
+            "damping": { "type": "number" },
+            "mass": { "type": "number" },
+            "restDelta": { "type": "number" },
+            "restSpeed": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        { "$ref": "#/$defs/TokenRef" }
+      ]
+    },
+    "KeyframeStep": {
+      "type": "object",
+      "description": "One keyframe step with optional offset (0..1) and style partials.",
+      "properties": {
+        "offset": { "type": "number", "minimum": 0, "maximum": 1 },
+        "style": { "type": "object", "description": "Style/property bag (transform, opacity, etc.)." }
+      },
+      "additionalProperties": false
+    },
+    "Transition": {
+      "type": "object",
+      "description": "A transition definition supporting tween, spring, or keyframes.",
+      "properties": {
+        "kind": { "type": "string", "enum": ["tween","spring","keyframes"], "default": "tween" },
+        "duration": { "$ref": "#/$defs/Time" },
+        "delay": { "$ref": "#/$defs/Time" },
+        "easing": { "$ref": "#/$defs/Easing" },
+        "spring": { "$ref": "#/$defs/Spring" },
+        "repeat": { "type": "number", "minimum": 0 },
+        "repeatType": { "type": "string", "enum": ["loop","mirror","reverse"] },
+        "keyframes": { "type": "array", "items": { "$ref": "#/$defs/KeyframeStep" } }
+      },
+      "additionalProperties": false
+    },
+    "Choreography": {
+      "type": "object",
+      "description": "Group animation coordination.",
+      "properties": {
+        "stagger": { "type": "number", "description": "Seconds to stagger children." },
+        "order": { "type": "string", "enum": ["forwards","backwards"] },
+        "overlap": { "type": "string", "enum": ["none","start","end"] }
+      },
+      "additionalProperties": false
+    },
+    "MotionSpec": {
+      "type": "object",
+      "properties": {
+        "enter": { "$ref": "#/$defs/Transition" },
+        "exit": { "$ref": "#/$defs/Transition" },
+        "inView": { "$ref": "#/$defs/Transition" },
+        "choreography": { "$ref": "#/$defs/Choreography" },
+        "reducedMotion": { "type": "string", "enum": ["auto","reduce","off"], "default": "auto" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,88 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/ui-brief.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Brief",
+  "vibespecVersion": "0.2.0",
+  "description": "High-level, stack-agnostic guidance that expresses goals and freedoms so agents can design modern or cutting-edge UIs without enumerating specific widgets or stacks.",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "goals": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "audiences": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "tone": { "type": "array", "items": { "type": "string" }, "default": [] }
+      },
+      "additionalProperties": false
+    },
+    "aesthetic": {
+      "type": "object",
+      "properties": {
+        "keywords": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "refs": { "type": "array", "items": { "type": "string", "format": "uri" }, "default": [] }
+      },
+      "additionalProperties": false
+    },
+    "innovation": { "type": "string", "enum": ["conservative","modern","cutting-edge","experimental"], "default": "modern" },
+    "freedom": {
+      "type": "object",
+      "description": "Non-binding guidance granting AI latitude to adopt new components/tech as appropriate.",
+      "properties": {
+        "allowNewComponents": { "type": "boolean", "default": true },
+        "allowExperimentalTech": { "type": "boolean", "default": true },
+        "allowAIComposition": { "type": "boolean", "default": true },
+        "adapterHints": { "type": "array", "items": { "type": "string" }, "default": [] }
+      },
+      "additionalProperties": false
+    },
+    "accessibility": { "type": "string", "enum": ["AA","AAA"], "default": "AA" },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "budget": {
+          "type": "object",
+          "properties": {
+            "lcpMs": { "type": "number" },
+            "cls": { "type": "number" },
+            "ttiMs": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        "images": { "type": "string", "enum": ["auto","optimize","lossless"], "default": "optimize" }
+      },
+      "additionalProperties": false
+    },
+    "platforms": { "type": "array", "items": { "type": "string", "enum": ["web","mobile-web","ios","android","desktop"] }, "default": ["web"] },
+    "theming": {
+      "type": "object",
+      "properties": {
+        "prefersDark": { "type": "boolean", "default": true },
+        "supportsSystem": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "motion": {
+      "type": "object",
+      "properties": {
+        "appetite": { "type": "string", "enum": ["subtle","standard","expressive"], "default": "standard" },
+        "reducedMotion": { "type": "string", "enum": ["auto","respect","ignore"], "default": "auto" }
+      },
+      "additionalProperties": false
+    },
+    "contentDensity": { "type": "string", "enum": ["comfortable","compact","sparse"], "default": "comfortable" },
+    "locales": { "type": "array", "items": { "type": "string" }, "default": ["en"] },
+    "seo": {
+      "type": "object",
+      "properties": {
+        "keywords": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "social": { "type": "string", "enum": ["basic","rich"], "default": "rich" }
+      },
+      "additionalProperties": false
+    },
+    "compliance": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "extensions": { "type": "object" }
+  },
+  "additionalProperties": false
+}

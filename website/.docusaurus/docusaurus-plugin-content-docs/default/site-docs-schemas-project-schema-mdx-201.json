@@ -34,11 +34,11 @@
   },
   "sidebar": "sidebar",
   "previous": {
-    "title": "Manifest",
-    "permalink": "/schemas/manifest"
+    "title": "Motion",
+    "permalink": "/schemas/motion"
   },
   "next": {
-    "title": "UI Components",
-    "permalink": "/schemas/ui-components"
+    "title": "UI Brief",
+    "permalink": "/schemas/ui-brief"
   }
 }

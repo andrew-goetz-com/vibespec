@@ -1,0 +1,44 @@
+{
+  "id": "schemas/ui-brief",
+  "title": "UI Brief",
+  "description": "High-level, stack-agnostic guidance that expresses goals and freedoms so agents can design modern or cutting-edge UIs without enumerating specific widgets or stacks.",
+  "source": "@site/docs/schemas/ui-brief.schema.mdx",
+  "sourceDirName": "schemas",
+  "slug": "/schemas/ui-brief",
+  "permalink": "/schemas/ui-brief",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/ui-brief.schema.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "schema",
+      "permalink": "/tags/schema"
+    },
+    {
+      "inline": true,
+      "label": "v0.2.0",
+      "permalink": "/tags/v-0-2-0"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "ui-brief",
+    "title": "UI Brief",
+    "description": "High-level, stack-agnostic guidance that expresses goals and freedoms so agents can design modern or cutting-edge UIs without enumerating specific widgets or stacks.",
+    "slug": "/schemas/ui-brief",
+    "tags": [
+      "schema",
+      "v0.2.0"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Project",
+    "permalink": "/schemas/project"
+  },
+  "next": {
+    "title": "UI Components",
+    "permalink": "/schemas/ui-components"
+  }
+}

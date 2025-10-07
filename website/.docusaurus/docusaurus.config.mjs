@@ -22,7 +22,7 @@ export default {
   },
   "themes": [],
   "plugins": [
-    "c:\\Users\\admin\\OneDrive\\code\\production\\vibespec\\website\\node_modules\\@easyops-cn\\docusaurus-search-local\\dist\\server\\server\\index.js"
+    "c:\\Users\\admin\\OneDrive\\code\\production\\agigui_com-1\\vibespec\\website\\node_modules\\@easyops-cn\\docusaurus-search-local\\dist\\server\\server\\index.js"
   ],
   "presets": [
     [
@@ -30,12 +30,12 @@ export default {
       {
         "docs": {
           "routeBasePath": "/",
-          "sidebarPath": "c:\\Users\\admin\\OneDrive\\code\\production\\vibespec\\website\\sidebars.ts",
+          "sidebarPath": "c:\\Users\\admin\\OneDrive\\code\\production\\agigui_com-1\\vibespec\\website\\sidebars.ts",
           "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website"
         },
         "blog": false,
         "theme": {
-          "customCss": "c:\\Users\\admin\\OneDrive\\code\\production\\vibespec\\website\\src\\css\\custom.css"
+          "customCss": "c:\\Users\\admin\\OneDrive\\code\\production\\agigui_com-1\\vibespec\\website\\src\\css\\custom.css"
         }
       }
     ]

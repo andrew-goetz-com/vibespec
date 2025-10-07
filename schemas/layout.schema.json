@@ -1,0 +1,164 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/layout.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Layout",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic layout primitives: stack/cluster/grid/frame with constraints, alignment, gaps, and responsive overrides.",
+  "type": "object",
+  "allOf": [ { "$ref": "#/$defs/LayoutNode" } ],
+  "$defs": {
+    "TokenRef": {
+      "type": "string",
+      "pattern": "^\\{[a-zA-Z0-9_.-]+\\}$",
+      "description": "Reference to a design token path, e.g., {space.3} or {breakpoints.md}"
+    },
+    "Dimension": {
+      "description": "Numeric (interpreted as px), string (e.g., '1fr','auto','min-content'), or token ref.",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" },
+        { "$ref": "#/$defs/TokenRef" }
+      ]
+    },
+    "Gap": {
+      "oneOf": [
+        { "$ref": "#/$defs/Dimension" },
+        {
+          "type": "object",
+          "properties": {
+            "row": { "$ref": "#/$defs/Dimension" },
+            "column": { "$ref": "#/$defs/Dimension" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AlignMain": {
+      "type": "string",
+      "enum": ["start","center","end","space-between","space-around","space-evenly"]
+    },
+    "AlignCross": {
+      "type": "string",
+      "enum": ["start","center","end","stretch","baseline"]
+    },
+    "Position": {
+      "type": "string",
+      "enum": ["relative","absolute","fixed","sticky"]
+    },
+    "Constraints": {
+      "type": "object",
+      "properties": {
+        "width": { "$ref": "#/$defs/Dimension" },
+        "height": { "$ref": "#/$defs/Dimension" },
+        "minWidth": { "$ref": "#/$defs/Dimension" },
+        "maxWidth": { "$ref": "#/$defs/Dimension" },
+        "minHeight": { "$ref": "#/$defs/Dimension" },
+        "maxHeight": { "$ref": "#/$defs/Dimension" },
+        "overflow": { "type": "string", "enum": ["visible","hidden","clip","scroll","auto"] },
+        "padding": { "$ref": "#/$defs/Gap" },
+        "margin": { "$ref": "#/$defs/Gap" }
+      },
+      "additionalProperties": false
+    },
+    "Responsive": {
+      "type": "object",
+      "description": "Breakpoint/environment overrides keyed by names (e.g., sm, md, dark, reducedMotion).",
+      "additionalProperties": {
+        "allOf": [ { "$ref": "#/$defs/LayoutNode" } ]
+      }
+    },
+
+    "StackLayout": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "stack" },
+        "direction": { "type": "string", "enum": ["row","column"] },
+        "gap": { "$ref": "#/$defs/Gap" },
+        "align": { "$ref": "#/$defs/AlignCross" },
+        "justify": { "$ref": "#/$defs/AlignMain" },
+        "wrap": { "type": "boolean", "default": false },
+        "constraints": { "$ref": "#/$defs/Constraints" }
+      },
+      "additionalProperties": false
+    },
+
+    "ClusterLayout": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "cluster" },
+        "gap": { "$ref": "#/$defs/Gap" },
+        "align": { "$ref": "#/$defs/AlignCross" },
+        "justify": { "$ref": "#/$defs/AlignMain" },
+        "minItemWidth": { "$ref": "#/$defs/Dimension" },
+        "constraints": { "$ref": "#/$defs/Constraints" }
+      },
+      "additionalProperties": false
+    },
+
+    "GridLayout": {
+      "type": "object",
+      "required": ["type","columns"],
+      "properties": {
+        "type": { "const": "grid" },
+        "columns": {
+          "description": "Grid column tracks (CSS-like strings such as '1fr', 'auto', 'minmax(200px,1fr)') or token refs.",
+          "type": "array",
+          "items": { "oneOf": [ { "type": "string" }, { "$ref": "#/$defs/TokenRef" } ] }
+        },
+        "rows": {
+          "type": "array",
+          "items": { "oneOf": [ { "type": "string" }, { "$ref": "#/$defs/TokenRef" } ] }
+        },
+        "areas": {
+          "description": "Grid template areas as rows of quoted area names (e.g., ['\"header header\"', '\"sidebar main\"']).",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "columnGap": { "$ref": "#/$defs/Dimension" },
+        "rowGap": { "$ref": "#/$defs/Dimension" },
+        "alignItems": { "$ref": "#/$defs/AlignCross" },
+        "justifyItems": { "$ref": "#/$defs/AlignCross" },
+        "alignContent": { "$ref": "#/$defs/AlignCross" },
+        "justifyContent": { "$ref": "#/$defs/AlignCross" },
+        "autoFlow": { "type": "string", "enum": ["row","column","dense","row dense","column dense"] },
+        "constraints": { "$ref": "#/$defs/Constraints" }
+      },
+      "additionalProperties": false
+    },
+
+    "FrameLayout": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "frame" },
+        "position": { "$ref": "#/$defs/Position" },
+        "inset": {
+          "type": "object",
+          "properties": {
+            "top": { "$ref": "#/$defs/Dimension" },
+            "right": { "$ref": "#/$defs/Dimension" },
+            "bottom": { "$ref": "#/$defs/Dimension" },
+            "left": { "$ref": "#/$defs/Dimension" }
+          },
+          "additionalProperties": false
+        },
+        "zIndex": { "oneOf": [ { "type": "number" }, { "$ref": "#/$defs/TokenRef" } ] },
+        "pointerEvents": { "type": "string", "enum": ["auto","none"] },
+        "constraints": { "$ref": "#/$defs/Constraints" }
+      },
+      "additionalProperties": false
+    },
+
+    "LayoutNode": {
+      "oneOf": [
+        { "$ref": "#/$defs/StackLayout" },
+        { "$ref": "#/$defs/ClusterLayout" },
+        { "$ref": "#/$defs/GridLayout" },
+        { "$ref": "#/$defs/FrameLayout" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
