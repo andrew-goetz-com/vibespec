@@ -72,7 +72,8 @@ const config: Config = {
     },
     colorMode: {
       defaultMode: 'light',
-      respectPrefersColorScheme: true,
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
   } satisfies ThemeConfig,
 };
