@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv/dist/2020');
@@ -27,6 +26,34 @@ const schemaMap = {
   uiComponents: loadSchema('ui-components.schema.json'),
   deployment: loadSchema('deployment.schema.json'),
 };
+// Pre-register all schemas to enable cross-$ref resolution
+Object.values(schemaMap).forEach((s) => ajv.addSchema(s));
+// Some schemas reference additional definitions by absolute $id URLs; add them explicitly
+try {
+  const designTokens = loadSchema('design-tokens.schema.json');
+  ajv.addSchema(designTokens); // $id: https://vibespec.vibecodeunited.com/schema/design-tokens.schema.json
+} catch (e) {
+  console.warn('[validate] Optional schema preload failed for design-tokens.schema.json:', e?.message || e);
+}
+
+// Preload additional schemas referenced by absolute $id so cross-$ref resolution works
+const optionalSchemas = [
+  'layout.schema.json',
+  'interaction.schema.json',
+  'motion.schema.json',
+  'accessibility.schema.json',
+  'ui-intent.schema.json',
+  'ui-brief.schema.json',
+];
+
+for (const schemaName of optionalSchemas) {
+  try {
+    const schema = loadSchema(schemaName);
+    ajv.addSchema(schema);
+  } catch (e) {
+    console.warn(`[validate] Optional schema preload failed for ${schemaName}:`, e?.message || e);
+  }
+}
 
 function validateFile(schema, filePath) {
   const obj = JSON.parse(fs.readFileSync(filePath, 'utf-8'));

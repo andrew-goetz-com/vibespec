@@ -1,17 +1,17 @@
 ---
 id: "ui-components"
 title: "UI Components"
-description: "Structures UI pages, components, layouts, and props schemas."
+description: "Stack-agnostic UI spec for pages, sections, components, props, variants, states, motion, interactions, responsiveness, and accessibility."
 slug: "/schemas/ui-components"
-tags: ["schema", "v0.1.0"]
+tags: ["schema", "v0.2.0"]
 ---
 
-Structures UI pages, components, layouts, and props schemas.
+Stack-agnostic UI spec for pages, sections, components, props, variants, states, motion, interactions, responsiveness, and accessibility.
 
 | Field | Value |
 | --- | --- |
 | $id | `https://vibespec.vibecodeunited.com/schema/ui-components.schema.json` |
-| vibespecVersion | `0.1.0` |
+| vibespecVersion | `0.2.0` |
 
 [View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/ui-components.schema.json)
 
@@ -20,63 +20,499 @@ Structures UI pages, components, layouts, and props schemas.
   "$id": "https://vibespec.vibecodeunited.com/schema/ui-components.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "UI Components",
-  "vibespecVersion": "0.1.0",
-  "description": "Structures UI pages, components, layouts, and props schemas.",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic UI spec for pages, sections, components, props, variants, states, motion, interactions, responsiveness, and accessibility.",
   "type": "object",
   "properties": {
     "theme": {
-      "type": "object"
+      "type": "object",
+      "description": "Unstructured theme object (kept for v0.1 compatibility). Prefer `tokens` for typed theming."
+    },
+    "tokens": {
+      "$ref": "https://vibespec.vibecodeunited.com/schema/design-tokens.schema.json",
+      "description": "Design tokens per W3C format. Use themes/modes/brands and semantic aliases."
+    },
+    "brief": {
+      "$ref": "https://vibespec.vibecodeunited.com/schema/ui-brief.schema.json",
+      "description": "High-level guidance (goals, innovation level, freedoms) to keep the spec simple and future-proof."
     },
     "pages": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": [
-          "id",
-          "route"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "route": {
-            "type": "string"
-          },
-          "layout": {
-            "type": "string"
-          },
-          "sections": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
-          }
-        },
-        "additionalProperties": false
-      }
+        "$ref": "#/$defs/Page"
+      },
+      "default": []
     },
     "components": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": [
-          "type"
-        ],
-        "properties": {
-          "type": {
-            "type": "string"
-          },
-          "props_schema": {
-            "type": "object"
-          }
-        },
-        "additionalProperties": false
-      }
+        "$ref": "#/$defs/ComponentSpec"
+      },
+      "default": []
     },
     "extensions": {
       "type": "object"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "TokenRef": {
+      "type": "string",
+      "pattern": "^\\{[a-zA-Z0-9_.-]+\\}$",
+      "description": "Reference to a design token path, e.g., {color.primary}"
+    },
+    "TokenOverrides": {
+      "type": "object",
+      "description": "Partial override tree for tokens when inlining small adjustments.",
+      "additionalProperties": true
+    },
+    "VariantName": {
+      "type": "string"
+    },
+    "SizeName": {
+      "type": "string"
+    },
+    "SlotName": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "hover",
+        "focus",
+        "pressed",
+        "disabled",
+        "loading",
+        "error",
+        "success",
+        "selected",
+        "expanded",
+        "collapsed"
+      ]
+    },
+    "Transition": {
+      "type": "object",
+      "properties": {
+        "duration": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/$defs/TokenRef"
+            }
+          ]
+        },
+        "easing": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/TokenRef"
+            }
+          ]
+        },
+        "spring": {
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "$ref": "#/$defs/TokenRef"
+            }
+          ]
+        },
+        "delay": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/$defs/TokenRef"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Motion": {
+      "type": "object",
+      "properties": {
+        "enter": {
+          "$ref": "#/$defs/Transition"
+        },
+        "exit": {
+          "$ref": "#/$defs/Transition"
+        },
+        "inView": {
+          "$ref": "#/$defs/Transition"
+        },
+        "stagger": {
+          "type": "number",
+          "description": "Seconds to stagger children"
+        },
+        "reducedMotion": {
+          "type": "boolean",
+          "description": "If true, reduce or disable motion"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Action": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "navigate",
+            "openModal",
+            "closeModal",
+            "fetch",
+            "mutate",
+            "toast",
+            "copy",
+            "download",
+            "setState",
+            "custom"
+          ]
+        },
+        "params": {
+          "type": "object"
+        },
+        "guard": {
+          "type": "string",
+          "description": "Optional condition expression"
+        },
+        "onSuccess": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Action"
+          }
+        },
+        "onError": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Action"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Interactions": {
+      "type": "object",
+      "description": "Event → actions map (e.g., click, keydown.Enter).",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/Action"
+        }
+      }
+    },
+    "A11y": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "aria": {
+          "type": "object",
+          "description": "ARIA attributes bag (aria-*)"
+        },
+        "landmark": {
+          "type": "string",
+          "enum": [
+            "banner",
+            "navigation",
+            "main",
+            "complementary",
+            "contentinfo",
+            "search",
+            "form",
+            "region"
+          ]
+        },
+        "labelledBy": {
+          "type": "string"
+        },
+        "describedBy": {
+          "type": "string"
+        },
+        "keyboardMap": {
+          "type": "object",
+          "description": "Key combo → actions (e.g., 'ArrowDown', 'Shift+Tab').",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Action"
+            }
+          }
+        },
+        "focusTrap": {
+          "type": "boolean"
+        },
+        "tabIndex": {
+          "type": "number"
+        },
+        "contrastTarget": {
+          "type": "string",
+          "enum": [
+            "AA",
+            "AAA"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Responsive": {
+      "type": "object",
+      "description": "Breakpoint or environment overrides keyed by names (e.g., sm, md, dark, reducedMotion).",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "props": {
+            "type": "object"
+          },
+          "style_tokens": {
+            "type": "object",
+            "description": "Per-override style tokens/aliases"
+          },
+          "motion": {
+            "$ref": "https://vibespec.vibecodeunited.com/schema/motion.schema.json#/$defs/MotionSpec"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ComponentSpec": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "props_schema": {
+          "type": "object"
+        },
+        "variants": {
+          "type": "object",
+          "description": "Variant name → overrides",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "props": {
+                "type": "object"
+              },
+              "style_tokens": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "sizes": {
+          "type": "object",
+          "description": "Size name → overrides",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "props": {
+                "type": "object"
+              },
+              "style_tokens": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "slots": {
+          "type": "object",
+          "description": "Slot name → constraints",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "boolean",
+                "default": false
+              },
+              "multiple": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/State"
+          }
+        },
+        "a11y": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/accessibility.schema.json"
+        },
+        "motionDefaults": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/motion.schema.json#/$defs/MotionSpec"
+        },
+        "style_tokens": {
+          "type": "object",
+          "description": "Default style tokens/aliases for this component"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ComponentInstance": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "required": [
+            "intent"
+          ]
+        }
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "Concrete component identifier. Optional when `intent` is provided; adapters resolve an appropriate component based on intent."
+        },
+        "props": {
+          "type": "object"
+        },
+        "intent": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/ui-intent.schema.json#/$defs/IntentUsage"
+        },
+        "variant": {
+          "$ref": "#/$defs/VariantName"
+        },
+        "size": {
+          "$ref": "#/$defs/SizeName"
+        },
+        "state": {
+          "$ref": "#/$defs/State"
+        },
+        "slot": {
+          "$ref": "#/$defs/SlotName"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Section"
+          }
+        },
+        "a11y": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/accessibility.schema.json"
+        },
+        "interactions": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/interaction.schema.json"
+        },
+        "motion": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/motion.schema.json#/$defs/MotionSpec"
+        },
+        "responsive": {
+          "$ref": "#/$defs/Responsive"
+        },
+        "style_tokens": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Section": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ComponentInstance"
+        },
+        {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "section",
+                "fragment",
+                "slotWrapper"
+              ]
+            },
+            "layout": {
+              "$ref": "https://vibespec.vibecodeunited.com/schema/layout.schema.json"
+            },
+            "intent": {
+              "$ref": "https://vibespec.vibecodeunited.com/schema/ui-intent.schema.json#/$defs/IntentUsage"
+            },
+            "children": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Section"
+              }
+            },
+            "a11y": {
+              "$ref": "https://vibespec.vibecodeunited.com/schema/accessibility.schema.json"
+            },
+            "interactions": {
+              "$ref": "https://vibespec.vibecodeunited.com/schema/interaction.schema.json"
+            },
+            "motion": {
+              "$ref": "https://vibespec.vibecodeunited.com/schema/motion.schema.json#/$defs/MotionSpec"
+            },
+            "responsive": {
+              "$ref": "#/$defs/Responsive"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Page": {
+      "type": "object",
+      "required": [
+        "id",
+        "route"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "route": {
+          "type": "string"
+        },
+        "layout": {
+          "type": "string",
+          "description": "Named layout preset (optional, for backward compatibility)"
+        },
+        "intent": {
+          "$ref": "https://vibespec.vibecodeunited.com/schema/ui-intent.schema.json#/$defs/IntentUsage"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Section"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }
 ```

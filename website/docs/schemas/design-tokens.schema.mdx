@@ -1,0 +1,220 @@
+---
+id: "design-tokens"
+title: "Design Tokens"
+description: "Stack-agnostic design tokens following W3C Design Tokens format with themes/modes/brands and aliasing."
+slug: "/schemas/design-tokens"
+tags: ["schema", "v0.2.0"]
+---
+
+Stack-agnostic design tokens following W3C Design Tokens format with themes/modes/brands and aliasing.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/design-tokens.schema.json` |
+| vibespecVersion | `0.2.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/design-tokens.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/design-tokens.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Design Tokens",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic design tokens following W3C Design Tokens format with themes/modes/brands and aliasing.",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "tokens"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique theme id (e.g., default, brandA)"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "description": "Visual mode (e.g., light, dark, high-contrast)"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "inherits": {
+            "type": "string",
+            "description": "Optional parent theme id to inherit from"
+          },
+          "tokens": {
+            "$ref": "#/$defs/TokenGroups"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "themes"
+  ],
+  "$defs": {
+    "Token": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "array"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "W3C token type",
+          "enum": [
+            "color",
+            "dimension",
+            "number",
+            "duration",
+            "cubic-bezier",
+            "fontFamily",
+            "fontWeight",
+            "lineHeight",
+            "letterSpacing",
+            "shadow",
+            "opacity",
+            "strokeStyle",
+            "border",
+            "radius",
+            "zIndex",
+            "easing",
+            "spring",
+            "breakpoint",
+            "string"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "alias": {
+          "type": "string",
+          "pattern": "^\\{[a-zA-Z0-9_.-]+\\}$",
+          "description": "Reference to another token: {color.primary}"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TokenGroup": {
+      "type": "object",
+      "description": "Recursive group of tokens or sub-groups",
+      "patternProperties": {
+        "^[a-zA-Z0-9_.-]+$": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Token"
+            },
+            {
+              "$ref": "#/$defs/TokenGroup"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "TokenGroups": {
+      "type": "object",
+      "description": "Common token categories",
+      "properties": {
+        "color": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "typography": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "space": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "size": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "radius": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "borderWidth": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "shadow": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "zIndex": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "opacity": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "breakpoints": {
+          "$ref": "#/$defs/TokenGroup"
+        },
+        "motion": {
+          "type": "object",
+          "properties": {
+            "duration": {
+              "$ref": "#/$defs/TokenGroup"
+            },
+            "easing": {
+              "$ref": "#/$defs/TokenGroup"
+            },
+            "spring": {
+              "$ref": "#/$defs/TokenGroup"
+            }
+          },
+          "additionalProperties": false
+        },
+        "semantic": {
+          "$ref": "#/$defs/TokenGroup"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```

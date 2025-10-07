@@ -1,7 +1,7 @@
 {
   "id": "schemas/ui-components",
   "title": "UI Components",
-  "description": "Structures UI pages, components, layouts, and props schemas.",
+  "description": "Stack-agnostic UI spec for pages, sections, components, props, variants, states, motion, interactions, responsiveness, and accessibility.",
   "source": "@site/docs/schemas/ui-components.schema.mdx",
   "sourceDirName": "schemas",
   "slug": "/schemas/ui-components",
@@ -17,28 +17,28 @@
     },
     {
       "inline": true,
-      "label": "v0.1.0",
-      "permalink": "/tags/v-0-1-0"
+      "label": "v0.2.0",
+      "permalink": "/tags/v-0-2-0"
     }
   ],
   "version": "current",
   "frontMatter": {
     "id": "ui-components",
     "title": "UI Components",
-    "description": "Structures UI pages, components, layouts, and props schemas.",
+    "description": "Stack-agnostic UI spec for pages, sections, components, props, variants, states, motion, interactions, responsiveness, and accessibility.",
     "slug": "/schemas/ui-components",
     "tags": [
       "schema",
-      "v0.1.0"
+      "v0.2.0"
     ]
   },
   "sidebar": "sidebar",
   "previous": {
-    "title": "Project",
-    "permalink": "/schemas/project"
+    "title": "UI Brief",
+    "permalink": "/schemas/ui-brief"
   },
   "next": {
-    "title": "Workflow",
-    "permalink": "/schemas/workflow"
+    "title": "UI Intent",
+    "permalink": "/schemas/ui-intent"
   }
 }

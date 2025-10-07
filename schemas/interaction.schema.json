@@ -1,0 +1,267 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/interaction.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interaction",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic interaction model: events, guards, typed actions, keyboard and gesture mappings, and optional async state hooks.",
+  "type": "object",
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/EventBinding" },
+      "default": []
+    },
+    "keyboard": {
+      "$ref": "#/$defs/KeyboardMap"
+    },
+    "gestures": {
+      "$ref": "#/$defs/GestureMap"
+    },
+    "async": {
+      "type": "object",
+      "description": "Optional async lifecycle hooks applied when actions are async.",
+      "properties": {
+        "onLoading": { "$ref": "#/$defs/ActionList" },
+        "onError": { "$ref": "#/$defs/ActionList" },
+        "onSuccess": { "$ref": "#/$defs/ActionList" }
+      },
+      "additionalProperties": false
+    },
+    "stateMachine": {
+      "$ref": "#/$defs/StateMachine"
+    },
+    "extensions": { "type": "object" }
+  },
+  "$defs": {
+    "TokenRef": {
+      "type": "string",
+      "pattern": "^\\{[a-zA-Z0-9_.-]+\\}$",
+      "description": "Reference to a design token path"
+    },
+
+    "Condition": {
+      "type": "string",
+      "description": "Boolean expression to guard actions (adapter-defined expression language)."
+    },
+
+    "EventName": {
+      "type": "string",
+      "description": "Event name (native, semantic, or namespaced). Examples: click, submit, change, input, focus, blur, keydown.Enter, pointerdown, hover, inView.enter, route.enter, custom:yourEvent",
+      "minLength": 1
+    },
+
+    "EventBinding": {
+      "type": "object",
+      "required": ["event", "actions"],
+      "properties": {
+        "event": { "$ref": "#/$defs/EventName" },
+        "when": { "$ref": "#/$defs/Condition" },
+        "actions": { "$ref": "#/$defs/ActionList" },
+        "throttleMs": { "type": "number", "minimum": 0 },
+        "debounceMs": { "type": "number", "minimum": 0 },
+        "preventDefault": { "type": "boolean", "default": false },
+        "stopPropagation": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    },
+
+    "KeyboardMap": {
+      "type": "object",
+      "description": "Key combo (e.g., 'Enter', 'Shift+Tab', 'Ctrl+K') to actions mapping.",
+      "additionalProperties": { "$ref": "#/$defs/ActionList" }
+    },
+
+    "GestureMap": {
+      "type": "object",
+      "description": "Gesture to actions mapping (e.g., swipeLeft, swipeRight, pinch, tap, longPress).",
+      "additionalProperties": { "$ref": "#/$defs/ActionList" }
+    },
+
+    "ActionList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Action" },
+      "default": []
+    },
+
+    "Action": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "navigate",
+            "openModal",
+            "closeModal",
+            "fetch",
+            "mutate",
+            "toast",
+            "copy",
+            "download",
+            "setState",
+            "custom"
+          ]
+        }
+      },
+      "allOf": [ { "$ref": "#/$defs/ActionDiscriminator" } ],
+      "additionalProperties": false
+    },
+
+    "ActionDiscriminator": {
+      "oneOf": [
+        { "$ref": "#/$defs/ActionNavigate" },
+        { "$ref": "#/$defs/ActionOpenModal" },
+        { "$ref": "#/$defs/ActionCloseModal" },
+        { "$ref": "#/$defs/ActionFetch" },
+        { "$ref": "#/$defs/ActionMutate" },
+        { "$ref": "#/$defs/ActionToast" },
+        { "$ref": "#/$defs/ActionCopy" },
+        { "$ref": "#/$defs/ActionDownload" },
+        { "$ref": "#/$defs/ActionSetState" },
+        { "$ref": "#/$defs/ActionCustom" }
+      ]
+    },
+
+    "ActionNavigate": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "navigate" },
+        "to": { "type": "string" },
+        "replace": { "type": "boolean", "default": false }
+      },
+      "required": ["type", "to"],
+      "additionalProperties": false
+    },
+
+    "ActionOpenModal": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "openModal" },
+        "id": { "type": "string" },
+        "props": { "type": "object" }
+      },
+      "required": ["type", "id"],
+      "additionalProperties": false
+    },
+
+    "ActionCloseModal": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "closeModal" },
+        "id": { "type": "string" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+
+    "ActionFetch": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "fetch" },
+        "url": { "type": "string" },
+        "method": { "type": "string", "default": "GET" },
+        "headers": { "type": "object" },
+        "body": {},
+        "cache": { "type": "string", "enum": ["default","no-store","reload","no-cache","force-cache","only-if-cached"] },
+        "assign": { "type": "object", "description": "Where to place results (adapter-defined path semantics)" },
+        "onSuccess": { "$ref": "#/$defs/ActionList" },
+        "onError": { "$ref": "#/$defs/ActionList" }
+      },
+      "required": ["type", "url"],
+      "additionalProperties": false
+    },
+
+    "ActionMutate": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "mutate" },
+        "endpoint": { "type": "string" },
+        "operation": { "type": "string", "description": "Optional operation name (e.g., GraphQL mutation)" },
+        "variables": { "type": "object" },
+        "headers": { "type": "object" },
+        "onSuccess": { "$ref": "#/$defs/ActionList" },
+        "onError": { "$ref": "#/$defs/ActionList" }
+      },
+      "required": ["type", "endpoint"],
+      "additionalProperties": false
+    },
+
+    "ActionToast": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "toast" },
+        "level": { "type": "string", "enum": ["info","success","warn","error"], "default": "info" },
+        "message": { "oneOf": [ { "type": "string" }, { "$ref": "#/$defs/TokenRef" } ] },
+        "durationMs": { "type": "number" }
+      },
+      "required": ["type", "message"],
+      "additionalProperties": false
+    },
+
+    "ActionCopy": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "copy" },
+        "text": { "type": "string" }
+      },
+      "required": ["type", "text"],
+      "additionalProperties": false
+    },
+
+    "ActionDownload": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "download" },
+        "url": { "type": "string" },
+        "filename": { "type": "string" }
+      },
+      "required": ["type", "url"],
+      "additionalProperties": false
+    },
+
+    "ActionSetState": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "setState" },
+        "path": { "type": "string", "description": "Adapter-defined state path (e.g., local or global store)" },
+        "value": {}
+      },
+      "required": ["type", "path", "value"],
+      "additionalProperties": false
+    },
+
+    "ActionCustom": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "custom" },
+        "name": { "type": "string" },
+        "args": { "type": "object" }
+      },
+      "required": ["type", "name"],
+      "additionalProperties": false
+    },
+
+    "StateMachine": {
+      "type": "object",
+      "description": "Optional lightweight state machine to orchestrate complex interactions.",
+      "properties": {
+        "initial": { "type": "string" },
+        "states": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "on": {
+                "type": "object",
+                "additionalProperties": { "$ref": "#/$defs/ActionList" }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,4 +1,4 @@
-import lunr from "c:\\Users\\admin\\OneDrive\\code\\production\\vibespec\\website\\node_modules\\lunr\\lunr.js";
+import lunr from "c:\\Users\\admin\\OneDrive\\code\\production\\agigui_com-1\\vibespec\\website\\node_modules\\lunr\\lunr.js";
 export const language = ["en"];
 export const removeDefaultStopWordFilter = false;
 export const removeDefaultStemmer = false;

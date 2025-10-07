@@ -1,0 +1,93 @@
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/accessibility.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Accessibility",
+  "vibespecVersion": "0.2.0",
+  "description": "Stack-agnostic accessibility model: roles, ARIA, landmarks, labels, keyboard maps, focus management, and contrast targets.",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "ARIA role (subset; adapters may extend)",
+      "enum": [
+        "button","link","dialog","alert","alertdialog","status","progressbar","slider","switch",
+        "checkbox","radio","radiogroup","combobox","listbox","option","menu","menubar","menuitem",
+        "tab","tablist","tabpanel","textbox","searchbox","grid","row","gridcell","tree","treeitem",
+        "group","separator","presentation","img","heading","list","listitem","navigation","main",
+        "banner","complementary","contentinfo","form","region"
+      ]
+    },
+    "aria": {
+      "type": "object",
+      "description": "ARIA attributes bag",
+      "patternProperties": {
+        "^aria-[a-z-]+$": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "landmark": {
+      "type": "string",
+      "enum": ["banner","navigation","main","complementary","contentinfo","search","form","region"]
+    },
+    "label": { "type": "string" },
+    "labelledBy": { "type": "string", "description": "Element id that labels this control" },
+    "describedBy": { "type": "string", "description": "Element id that describes this control" },
+
+    "keyboard": {
+      "type": "object",
+      "description": "Key combo → actions mapping (e.g., 'Enter', 'Shift+Tab')",
+      "additionalProperties": {
+        "$ref": "https://vibespec.vibecodeunited.com/schema/interaction.schema.json#/$defs/ActionList"
+      }
+    },
+
+    "focus": {
+      "type": "object",
+      "description": "Focus management and order",
+      "properties": {
+        "trap": { "type": "boolean", "default": false },
+        "restore": { "type": "boolean", "default": true },
+        "initialId": { "type": "string" },
+        "order": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+
+    "contrast": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string", "enum": ["AA","AAA"], "default": "AA" },
+        "surfaces": {
+          "type": "object",
+          "description": "Optional per-surface contrast requirements",
+          "additionalProperties": { "type": "number", "minimum": 1 }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "liveRegions": {
+      "type": "array",
+      "description": "Live region intents for announcements",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "politeness": { "type": "string", "enum": ["polite","assertive"] },
+          "content": { "type": "string" }
+        },
+        "required": ["politeness"],
+        "additionalProperties": false
+      }
+    },
+
+    "extensions": { "type": "object" }
+  },
+  "additionalProperties": false
+}

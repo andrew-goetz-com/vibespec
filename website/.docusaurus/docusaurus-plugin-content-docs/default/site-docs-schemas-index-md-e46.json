@@ -18,11 +18,11 @@
   },
   "sidebar": "sidebar",
   "previous": {
-    "title": "Deployment",
-    "permalink": "/schemas/deployment"
+    "title": "Design Tokens",
+    "permalink": "/schemas/design-tokens"
   },
   "next": {
-    "title": "Manifest",
-    "permalink": "/schemas/manifest"
+    "title": "Interaction",
+    "permalink": "/schemas/interaction"
   }
 }

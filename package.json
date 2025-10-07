@@ -6,6 +6,7 @@
   "homepage": "https://vibespec.vibecodeunited.com",
   "scripts": {
     "validate": "node tools/validate.js",
+    "scaffold:carcrm": "node tools/scaffold-from-json.js",
     "docs:generate": "node tools/generate-docs.js",
     "site:dev": "cd website && npx docusaurus start",
     "site:install": "npm ci --prefix website",

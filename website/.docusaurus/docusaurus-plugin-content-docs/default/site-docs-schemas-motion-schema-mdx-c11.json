@@ -1,0 +1,44 @@
+{
+  "id": "schemas/motion",
+  "title": "Motion",
+  "description": "Stack-agnostic motion model: transitions (tween/spring/keyframes), choreography (stagger/order/overlap), presets, and reduced-motion behavior.",
+  "source": "@site/docs/schemas/motion.schema.mdx",
+  "sourceDirName": "schemas",
+  "slug": "/schemas/motion",
+  "permalink": "/schemas/motion",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/motion.schema.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "schema",
+      "permalink": "/tags/schema"
+    },
+    {
+      "inline": true,
+      "label": "v0.2.0",
+      "permalink": "/tags/v-0-2-0"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "motion",
+    "title": "Motion",
+    "description": "Stack-agnostic motion model: transitions (tween/spring/keyframes), choreography (stagger/order/overlap), presets, and reduced-motion behavior.",
+    "slug": "/schemas/motion",
+    "tags": [
+      "schema",
+      "v0.2.0"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Manifest",
+    "permalink": "/schemas/manifest"
+  },
+  "next": {
+    "title": "Project",
+    "permalink": "/schemas/project"
+  }
+}

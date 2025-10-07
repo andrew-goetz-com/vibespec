@@ -14,11 +14,11 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', '181'),
+    component: ComponentCreator('/', '9cf'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', 'fec'),
+        component: ComponentCreator('/', '842'),
         routes: [
           {
             path: '/tags',
@@ -61,8 +61,13 @@ export default [
             exact: true
           },
           {
+            path: '/tags/v-0-2-0',
+            component: ComponentCreator('/tags/v-0-2-0', '465'),
+            exact: true
+          },
+          {
             path: '/',
-            component: ComponentCreator('/', 'f79'),
+            component: ComponentCreator('/', '78f'),
             routes: [
               {
                 path: '/category/examples',
@@ -137,6 +142,12 @@ export default [
                 sidebar: "sidebar"
               },
               {
+                path: '/schemas/accessibility',
+                component: ComponentCreator('/schemas/accessibility', 'd41'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
                 path: '/schemas/agent',
                 component: ComponentCreator('/schemas/agent', '672'),
                 exact: true,
@@ -167,8 +178,32 @@ export default [
                 sidebar: "sidebar"
               },
               {
+                path: '/schemas/design-tokens',
+                component: ComponentCreator('/schemas/design-tokens', '553'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
+                path: '/schemas/interaction',
+                component: ComponentCreator('/schemas/interaction', '09a'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
+                path: '/schemas/layout',
+                component: ComponentCreator('/schemas/layout', 'e49'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
                 path: '/schemas/manifest',
                 component: ComponentCreator('/schemas/manifest', '778'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
+                path: '/schemas/motion',
+                component: ComponentCreator('/schemas/motion', 'fb4'),
                 exact: true,
                 sidebar: "sidebar"
               },
@@ -179,8 +214,20 @@ export default [
                 sidebar: "sidebar"
               },
               {
+                path: '/schemas/ui-brief',
+                component: ComponentCreator('/schemas/ui-brief', '768'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
                 path: '/schemas/ui-components',
                 component: ComponentCreator('/schemas/ui-components', '422'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
+                path: '/schemas/ui-intent',
+                component: ComponentCreator('/schemas/ui-intent', '512'),
                 exact: true,
                 sidebar: "sidebar"
               },
