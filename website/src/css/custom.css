@@ -87,6 +87,11 @@ h6 {
   text-shadow: 0 0 18px rgba(143, 138, 255, 0.45);
 }
 
+/* Mobile menu fix */
+.navbar-sidebar__items {
+  height: auto !important;
+}
+
 /* Footer */
 .footer {
   background: rgba(3, 5, 18, 0.92);
