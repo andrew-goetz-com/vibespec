@@ -87,9 +87,101 @@ h6 {
   text-shadow: 0 0 18px rgba(143, 138, 255, 0.45);
 }
 
-/* Mobile menu fix */
+/* Mobile menu enhancements */
+.navbar-sidebar {
+  background: rgba(2, 5, 18, 0.95) !important;
+  backdrop-filter: blur(32px) saturate(160%) !important;
+  border-right: var(--vibe-border);
+  box-shadow: 0 0 80px rgba(139, 92, 246, 0.15), 
+              inset 0 0 60px rgba(79, 70, 229, 0.08);
+}
+
+.navbar-sidebar__brand {
+  background: rgba(12, 20, 45, 0.6);
+  border-bottom: var(--vibe-border);
+  padding: 18px 24px;
+  backdrop-filter: blur(12px);
+}
+
 .navbar-sidebar__items {
   height: auto !important;
+  padding: 24px 12px;
+}
+
+.navbar-sidebar .menu__list-item {
+  margin: 6px 0;
+}
+
+.navbar-sidebar .menu__link {
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(220, 228, 255, 0.85);
+  background: rgba(12, 20, 45, 0.4);
+  border: 1px solid rgba(158, 173, 255, 0.12);
+  transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-sidebar .menu__link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(143, 138, 255, 0.15), rgba(139, 92, 246, 0.1));
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.navbar-sidebar .menu__link:hover {
+  background: rgba(12, 20, 45, 0.7);
+  border-color: rgba(143, 138, 255, 0.35);
+  color: #f1f0ff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25),
+              inset 0 0 20px rgba(143, 138, 255, 0.1);
+}
+
+.navbar-sidebar .menu__link:hover::before {
+  opacity: 1;
+}
+
+.navbar-sidebar .menu__link--active {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(143, 138, 255, 0.4);
+  color: var(--ifm-color-primary-light);
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.3),
+              inset 0 0 24px rgba(143, 138, 255, 0.15);
+}
+
+.navbar-sidebar__back {
+  background: rgba(12, 20, 45, 0.5);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 12px;
+  border: 1px solid rgba(158, 173, 255, 0.15);
+  color: rgba(220, 228, 255, 0.75);
+  font-size: 14px;
+  transition: all 200ms ease;
+}
+
+.navbar-sidebar__back:hover {
+  background: rgba(12, 20, 45, 0.8);
+  border-color: rgba(158, 173, 255, 0.3);
+  color: #f1f0ff;
+  transform: translateX(-2px);
+}
+
+.navbar-sidebar__close {
+  color: rgba(220, 228, 255, 0.85);
+  transition: all 200ms ease;
+}
+
+.navbar-sidebar__close:hover {
+  color: var(--ifm-color-primary-light);
+  transform: rotate(90deg);
 }
 
 /* Footer */
