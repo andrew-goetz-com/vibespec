@@ -1,0 +1,28 @@
+{
+  "id": "schemas/schemas-index",
+  "title": "Schemas",
+  "description": "Browse canonical JSON Schemas with metadata and raw links.",
+  "source": "@site/docs/schemas/index.md",
+  "sourceDirName": "schemas",
+  "slug": "/schemas",
+  "permalink": "/schemas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "schemas-index",
+    "title": "Schemas",
+    "slug": "/schemas"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Deployment",
+    "permalink": "/schemas/deployment"
+  },
+  "next": {
+    "title": "Manifest",
+    "permalink": "/schemas/manifest"
+  }
+}

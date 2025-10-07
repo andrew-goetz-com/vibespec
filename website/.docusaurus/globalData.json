@@ -1,0 +1,138 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/",
+          "mainDocId": "schemas/agent",
+          "docs": [
+            {
+              "id": "changelog",
+              "path": "/changelog",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "diff-reports/diff-reports-index",
+              "path": "/diff-reports",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "diff-reports/idea-forge-0.1.0_to_0.2.0",
+              "path": "/diff-reports/idea-forge-0-1-0-to-0-2-0",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "examples/chat-assistant",
+              "path": "/examples/chat-assistant",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "examples/data-analyzer",
+              "path": "/examples/data-analyzer",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "examples/examples-index",
+              "path": "/examples",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "examples/idea-forge",
+              "path": "/examples/idea-forge",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "examples/idea-forge-v0-2",
+              "path": "/examples/idea-forge-v0-2",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "getting-started",
+              "path": "/getting-started",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/agent",
+              "path": "/schemas/agent",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/api-routes",
+              "path": "/schemas/api-routes",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/architecture",
+              "path": "/schemas/architecture",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/data-model",
+              "path": "/schemas/data-model",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/deployment",
+              "path": "/schemas/deployment",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/manifest",
+              "path": "/schemas/manifest",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/project",
+              "path": "/schemas/project",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/schemas-index",
+              "path": "/schemas",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/ui-components",
+              "path": "/schemas/ui-components",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "schemas/workflow",
+              "path": "/schemas/workflow",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "tools",
+              "path": "/tools",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/schemas",
+              "path": "/category/schemas",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "/category/examples",
+              "path": "/category/examples",
+              "sidebar": "sidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "sidebar": {
+              "link": {
+                "path": "/category/schemas",
+                "label": "Schemas"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

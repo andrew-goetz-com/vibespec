@@ -1,0 +1,44 @@
+{
+  "id": "schemas/ui-components",
+  "title": "UI Components",
+  "description": "Structures UI pages, components, layouts, and props schemas.",
+  "source": "@site/docs/schemas/ui-components.schema.mdx",
+  "sourceDirName": "schemas",
+  "slug": "/schemas/ui-components",
+  "permalink": "/schemas/ui-components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/ui-components.schema.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "schema",
+      "permalink": "/tags/schema"
+    },
+    {
+      "inline": true,
+      "label": "v0.1.0",
+      "permalink": "/tags/v-0-1-0"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "ui-components",
+    "title": "UI Components",
+    "description": "Structures UI pages, components, layouts, and props schemas.",
+    "slug": "/schemas/ui-components",
+    "tags": [
+      "schema",
+      "v0.1.0"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Project",
+    "permalink": "/schemas/project"
+  },
+  "next": {
+    "title": "Workflow",
+    "permalink": "/schemas/workflow"
+  }
+}

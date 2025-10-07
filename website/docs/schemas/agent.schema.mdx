@@ -1,0 +1,160 @@
+---
+id: "agent"
+title: "Agent"
+description: "Describes an agent’s identity, capabilities, IO, tools, and security."
+slug: "/schemas/agent"
+tags: ["schema", "v0.1.0"]
+---
+
+Describes an agent’s identity, capabilities, IO, tools, and security.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/agent.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/agent.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/agent.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent",
+  "vibespecVersion": "0.1.0",
+  "description": "Describes an agent’s identity, capabilities, IO, tools, and security.",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "role",
+    "inputs",
+    "outputs",
+    "state"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "role": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/io"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "llm",
+              "http",
+              "db",
+              "fs",
+              "custom"
+            ]
+          },
+          "config": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "stateless",
+        "ephemeral",
+        "persistent"
+      ]
+    },
+    "config": {
+      "type": "object"
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sandbox": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "io": {
+      "type": "object",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```

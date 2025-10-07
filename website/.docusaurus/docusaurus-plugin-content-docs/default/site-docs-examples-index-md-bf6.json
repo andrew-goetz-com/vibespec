@@ -1,0 +1,28 @@
+{
+  "id": "examples/examples-index",
+  "title": "Examples",
+  "description": "Explore real projects that validate against the VibeSpec schemas.",
+  "source": "@site/docs/examples/index.md",
+  "sourceDirName": "examples",
+  "slug": "/examples",
+  "permalink": "/examples",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/examples/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "examples-index",
+    "title": "Examples",
+    "slug": "/examples"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Example: Idea Forge",
+    "permalink": "/examples/idea-forge"
+  },
+  "next": {
+    "title": "Diff Reports",
+    "permalink": "/diff-reports"
+  }
+}

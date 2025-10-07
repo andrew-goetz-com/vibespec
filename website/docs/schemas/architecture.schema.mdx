@@ -1,0 +1,68 @@
+---
+id: "architecture"
+title: "Architecture"
+description: "Outlines frontend, backend, data, auth, storage, deployment, and dependencies."
+slug: "/schemas/architecture"
+tags: ["schema", "v0.1.0"]
+---
+
+Outlines frontend, backend, data, auth, storage, deployment, and dependencies.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/architecture.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/architecture.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/architecture.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Architecture",
+  "vibespecVersion": "0.1.0",
+  "description": "Outlines frontend, backend, data, auth, storage, deployment, and dependencies.",
+  "type": "object",
+  "properties": {
+    "frontend": {
+      "type": "object"
+    },
+    "backend": {
+      "type": "object"
+    },
+    "database": {
+      "type": "object"
+    },
+    "auth": {
+      "type": "object"
+    },
+    "storage": {
+      "type": "object"
+    },
+    "deployment": {
+      "type": "object"
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "npm": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "system": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  }
+}
+```

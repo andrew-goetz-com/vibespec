@@ -5,7 +5,10 @@
   "description": "VibeSpec \u2014 a spec-first standard for agentic software.",
   "homepage": "https://vibespec.vibecodeunited.com",
   "scripts": {
-    "validate": "node tools/validate.js"
+    "validate": "node tools/validate.js",
+    "docs:generate": "node tools/generate-docs.js",
+    "site:dev": "cd website && npx docusaurus start",
+    "site:build": "npm run docs:generate && cd website && npx docusaurus build --out-dir ../docs"
   },
   "devDependencies": {
     "ajv": "^8.12.0",

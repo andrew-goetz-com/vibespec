@@ -1,0 +1,44 @@
+{
+  "id": "examples/data-analyzer",
+  "title": "Example: Data Analyzer",
+  "description": "Documentation and raw files for example \"data-analyzer\".",
+  "source": "@site/docs/examples/data-analyzer.mdx",
+  "sourceDirName": "examples",
+  "slug": "/examples/data-analyzer",
+  "permalink": "/examples/data-analyzer",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/examples/data-analyzer.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "example",
+      "permalink": "/tags/example"
+    },
+    {
+      "inline": true,
+      "label": "data-analyzer",
+      "permalink": "/tags/data-analyzer"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-analyzer",
+    "title": "Example: Data Analyzer",
+    "slug": "/examples/data-analyzer",
+    "description": "Documentation and raw files for example \"data-analyzer\".",
+    "tags": [
+      "example",
+      "data-analyzer"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Example: Chat Assistant",
+    "permalink": "/examples/chat-assistant"
+  },
+  "next": {
+    "title": "Example: Idea Forge V0.2",
+    "permalink": "/examples/idea-forge-v0-2"
+  }
+}

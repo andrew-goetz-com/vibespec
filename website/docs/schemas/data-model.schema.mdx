@@ -1,0 +1,93 @@
+---
+id: "data-model"
+title: "Data Model"
+description: "Defines data entities, fields, indexes, and relations used by the project."
+slug: "/schemas/data-model"
+tags: ["schema", "v0.1.0"]
+---
+
+Defines data entities, fields, indexes, and relations used by the project.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/data-model.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/data-model.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/data-model.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Model",
+  "vibespecVersion": "0.1.0",
+  "description": "Defines data entities, fields, indexes, and relations used by the project.",
+  "type": "object",
+  "required": [
+    "name",
+    "fields"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "default": {},
+          "shape": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "indexes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unique": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+```

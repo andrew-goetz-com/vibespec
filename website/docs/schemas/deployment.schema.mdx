@@ -1,0 +1,72 @@
+---
+id: "deployment"
+title: "Deployment"
+description: "Describes environments, CI, domains, secrets, and deployment settings."
+slug: "/schemas/deployment"
+tags: ["schema", "v0.1.0"]
+---
+
+Describes environments, CI, domains, secrets, and deployment settings.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/deployment.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/deployment.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/deployment.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deployment",
+  "vibespecVersion": "0.1.0",
+  "description": "Describes environments, CI, domains, secrets, and deployment settings.",
+  "type": "object",
+  "properties": {
+    "environments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "domains": {
+            "type": "object"
+          },
+          "ci": {
+            "type": "object",
+            "properties": {
+              "provider": {
+                "type": "string"
+              },
+              "workflows": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "secrets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+```

@@ -1,0 +1,44 @@
+{
+  "id": "schemas/architecture",
+  "title": "Architecture",
+  "description": "Outlines frontend, backend, data, auth, storage, deployment, and dependencies.",
+  "source": "@site/docs/schemas/architecture.schema.mdx",
+  "sourceDirName": "schemas",
+  "slug": "/schemas/architecture",
+  "permalink": "/schemas/architecture",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/architecture.schema.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "schema",
+      "permalink": "/tags/schema"
+    },
+    {
+      "inline": true,
+      "label": "v0.1.0",
+      "permalink": "/tags/v-0-1-0"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "architecture",
+    "title": "Architecture",
+    "description": "Outlines frontend, backend, data, auth, storage, deployment, and dependencies.",
+    "slug": "/schemas/architecture",
+    "tags": [
+      "schema",
+      "v0.1.0"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "API Routes",
+    "permalink": "/schemas/api-routes"
+  },
+  "next": {
+    "title": "Data Model",
+    "permalink": "/schemas/data-model"
+  }
+}

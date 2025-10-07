@@ -1,0 +1,28 @@
+{
+  "id": "changelog",
+  "title": "Changelog",
+  "description": "\\# Changelog",
+  "source": "@site/docs/changelog.md",
+  "sourceDirName": ".",
+  "slug": "/changelog",
+  "permalink": "/changelog",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/changelog.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "changelog",
+    "title": "Changelog",
+    "slug": "/changelog"
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "IdeaForge 0.1.0 → 0.2.0 Diff Report",
+    "permalink": "/diff-reports/idea-forge-0-1-0-to-0-2-0"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/getting-started"
+  }
+}

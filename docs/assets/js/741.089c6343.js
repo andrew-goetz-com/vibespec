@@ -1,0 +1,1 @@
+(self.webpackChunkvibespec_docs=self.webpackChunkvibespec_docs||[]).push([[741],{5741:()=>{}}]);

@@ -1,0 +1,86 @@
+---
+id: "api-routes"
+title: "API Routes"
+description: "Declares backend endpoints, contracts, IO shapes, and auth."
+slug: "/schemas/api-routes"
+tags: ["schema", "v0.1.0"]
+---
+
+Declares backend endpoints, contracts, IO shapes, and auth.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/api-routes.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/api-routes.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/api-routes.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "API Routes",
+  "vibespecVersion": "0.1.0",
+  "description": "Declares backend endpoints, contracts, IO shapes, and auth.",
+  "type": "object",
+  "required": [
+    "routes"
+  ],
+  "properties": {
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "method",
+          "path"
+        ],
+        "properties": {
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          },
+          "path": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "input": {
+            "type": "object"
+          },
+          "output": {
+            "type": "object"
+          },
+          "auth": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "boolean"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+```

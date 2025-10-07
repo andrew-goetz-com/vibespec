@@ -1,0 +1,82 @@
+---
+id: "ui-components"
+title: "UI Components"
+description: "Structures UI pages, components, layouts, and props schemas."
+slug: "/schemas/ui-components"
+tags: ["schema", "v0.1.0"]
+---
+
+Structures UI pages, components, layouts, and props schemas.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/ui-components.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/ui-components.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/ui-components.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Components",
+  "vibespecVersion": "0.1.0",
+  "description": "Structures UI pages, components, layouts, and props schemas.",
+  "type": "object",
+  "properties": {
+    "theme": {
+      "type": "object"
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "route"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "props_schema": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+```

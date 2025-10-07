@@ -1,0 +1,70 @@
+name: Build and publish docs
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'schemas/**'
+      - 'examples/**'
+      - 'reports/**'
+      - 'website/**'
+      - 'tools/generate-docs.js'
+      - 'CHANGELOG.md'
+      - 'package.json'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Backup CNAME if present
+        shell: bash
+        run: |
+          if [ -f docs/CNAME ]; then
+            cp docs/CNAME /tmp/CNAME
+          fi
+
+      - name: Build docs site
+        run: npm run site:build
+
+      - name: Restore CNAME if needed
+        shell: bash
+        run: |
+          if [ -f /tmp/CNAME ] && [ ! -f docs/CNAME ]; then
+            cp /tmp/CNAME docs/CNAME
+          fi
+
+      - name: Commit and push updated docs
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -n "$(git status --porcelain docs)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs
+            git commit -m "docs: rebuild static site [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

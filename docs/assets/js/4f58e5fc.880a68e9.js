@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkvibespec_docs=self.webpackChunkvibespec_docs||[]).push([[209],{1762:e=>{e.exports=JSON.parse('{"categoryGeneratedIndex":{"title":"Schemas","slug":"/category/schemas","permalink":"/category/schemas","sidebar":"sidebar","navigation":{"next":{"title":"Agent","permalink":"/schemas/agent"}}}}')}}]);

@@ -1,0 +1,44 @@
+{
+  "id": "schemas/api-routes",
+  "title": "API Routes",
+  "description": "Declares backend endpoints, contracts, IO shapes, and auth.",
+  "source": "@site/docs/schemas/api-routes.schema.mdx",
+  "sourceDirName": "schemas",
+  "slug": "/schemas/api-routes",
+  "permalink": "/schemas/api-routes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/andrew-goetz-com/vibespec/edit/main/website/docs/schemas/api-routes.schema.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "schema",
+      "permalink": "/tags/schema"
+    },
+    {
+      "inline": true,
+      "label": "v0.1.0",
+      "permalink": "/tags/v-0-1-0"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "api-routes",
+    "title": "API Routes",
+    "description": "Declares backend endpoints, contracts, IO shapes, and auth.",
+    "slug": "/schemas/api-routes",
+    "tags": [
+      "schema",
+      "v0.1.0"
+    ]
+  },
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Agent",
+    "permalink": "/schemas/agent"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/schemas/architecture"
+  }
+}

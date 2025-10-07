@@ -1,0 +1,83 @@
+---
+id: "manifest"
+title: "Manifest"
+description: "Defines core project metadata, configuration, and structure for a VibeSpec project."
+slug: "/schemas/manifest"
+tags: ["schema", "v0.1.0"]
+---
+
+Defines core project metadata, configuration, and structure for a VibeSpec project.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/manifest.schema.json` |
+| vibespecVersion | `0.1.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/manifest.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Manifest",
+  "vibespecVersion": "0.1.0",
+  "description": "Defines core project metadata, configuration, and structure for a VibeSpec project.",
+  "type": "object",
+  "required": [
+    "vibespec_version",
+    "project",
+    "architecture",
+    "paths"
+  ],
+  "properties": {
+    "vibespec_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "project": {
+      "type": "string"
+    },
+    "architecture": {
+      "type": "string"
+    },
+    "paths": {
+      "type": "object",
+      "required": [
+        "agents",
+        "workflows",
+        "data_models",
+        "api",
+        "schemas"
+      ],
+      "properties": {
+        "agents": {
+          "type": "string"
+        },
+        "workflows": {
+          "type": "string"
+        },
+        "data_models": {
+          "type": "string"
+        },
+        "api": {
+          "type": "string"
+        },
+        "ui": {
+          "type": "string"
+        },
+        "deployment": {
+          "type": "string"
+        },
+        "schemas": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+```
