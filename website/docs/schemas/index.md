@@ -7,6 +7,7 @@ slug: "/schemas"
 Browse canonical JSON Schemas with metadata and raw links.
 
 - [Accessibility](/schemas/accessibility)
+- [Adapters](/schemas/adapters)
 - [Agent](/schemas/agent)
 - [API Routes](/schemas/api-routes)
 - [Architecture](/schemas/architecture)

@@ -1,0 +1,386 @@
+---
+id: "adapters"
+title: "Adapters"
+description: "Framework adapters that translate VibeSpec Core (brief, intent, tokens, layout, motion, a11y, interaction) into concrete stack outputs without constraining the spec."
+slug: "/schemas/adapters"
+tags: ["schema", "v0.2.0"]
+---
+
+Framework adapters that translate VibeSpec Core (brief, intent, tokens, layout, motion, a11y, interaction) into concrete stack outputs without constraining the spec.
+
+| Field | Value |
+| --- | --- |
+| $id | `https://vibespec.vibecodeunited.com/schema/adapters.schema.json` |
+| vibespecVersion | `0.2.0` |
+
+[View raw schema on GitHub](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/adapters.schema.json)
+
+```json
+{
+  "$id": "https://vibespec.vibecodeunited.com/schema/adapters.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adapters",
+  "vibespecVersion": "0.2.0",
+  "description": "Framework adapters that translate VibeSpec Core (brief, intent, tokens, layout, motion, a11y, interaction) into concrete stack outputs without constraining the spec.",
+  "type": "object",
+  "properties": {
+    "adapters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Adapter"
+      },
+      "default": []
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "adapters"
+  ],
+  "$defs": {
+    "Target": {
+      "type": "string",
+      "enum": [
+        "react",
+        "react-native",
+        "vue",
+        "svelte",
+        "web-components",
+        "flutter",
+        "swiftui",
+        "android",
+        "solid",
+        "angular",
+        "generic"
+      ]
+    },
+    "Feature": {
+      "type": "string",
+      "enum": [
+        "intentOnly",
+        "reducedMotion",
+        "containerQueries",
+        "serverComponents",
+        "islands",
+        "ssr",
+        "csr",
+        "pwa",
+        "rtl",
+        "a11yAA",
+        "a11yAAA"
+      ]
+    },
+    "Adapter": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "target"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique adapter id (e.g., react-next-tailwind)."
+        },
+        "name": {
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/Target"
+        },
+        "version": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "number",
+          "default": 0
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Feature"
+          },
+          "default": []
+        },
+        "generators": {
+          "type": "object",
+          "properties": {
+            "cssVariables": {
+              "type": "boolean",
+              "default": true
+            },
+            "utilityConfig": {
+              "type": "string",
+              "enum": [
+                "tailwind",
+                "uno",
+                "none"
+              ],
+              "default": "tailwind"
+            },
+            "stories": {
+              "type": "boolean",
+              "default": true
+            },
+            "routes": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "mapping": {
+          "$ref": "#/$defs/Mapping"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Mapping": {
+      "type": "object",
+      "properties": {
+        "intentMap": {
+          "$ref": "#/$defs/IntentMap"
+        },
+        "variantMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/VariantMapping"
+          }
+        },
+        "sizeMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/SizeMapping"
+          }
+        },
+        "slotMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/SlotMapping"
+          }
+        },
+        "layoutMap": {
+          "$ref": "#/$defs/LayoutMapping"
+        },
+        "motionMap": {
+          "$ref": "#/$defs/MotionMapping"
+        },
+        "a11yPolicy": {
+          "$ref": "#/$defs/A11yPolicy"
+        },
+        "actionMap": {
+          "$ref": "#/$defs/ActionMap"
+        },
+        "tokenEmit": {
+          "$ref": "#/$defs/TokenEmit"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IntentMap": {
+      "type": "object",
+      "description": "Map intent names to adapter-specific component blueprints.",
+      "additionalProperties": {
+        "$ref": "#/$defs/ComponentBlueprint"
+      }
+    },
+    "ComponentBlueprint": {
+      "type": "object",
+      "required": [
+        "component"
+      ],
+      "properties": {
+        "component": {
+          "type": "string",
+          "description": "Adapter component identifier (e.g., Button, NavTabs)."
+        },
+        "library": {
+          "type": "string",
+          "description": "Optional library/package name (non-binding hint)."
+        },
+        "props": {
+          "type": "object",
+          "description": "Prop mapping rules from spec props to adapter props (dot-path expressions allowed).",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "classList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "fallback": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ComponentBlueprint"
+          },
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    },
+    "VariantMapping": {
+      "type": "object",
+      "properties": {
+        "classList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "SizeMapping": {
+      "$ref": "#/$defs/VariantMapping"
+    },
+    "SlotMapping": {
+      "$ref": "#/$defs/VariantMapping"
+    },
+    "LayoutMapping": {
+      "type": "object",
+      "description": "Mapping of layout primitives to adapter constructs (class utilities, style props, wrappers).",
+      "properties": {
+        "stack": {
+          "$ref": "#/$defs/VariantMapping"
+        },
+        "cluster": {
+          "$ref": "#/$defs/VariantMapping"
+        },
+        "grid": {
+          "$ref": "#/$defs/VariantMapping"
+        },
+        "frame": {
+          "$ref": "#/$defs/VariantMapping"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MotionMapping": {
+      "type": "object",
+      "description": "Translation of MotionSpec into adapter animation lib configuration.",
+      "properties": {
+        "enter": {
+          "type": "object"
+        },
+        "exit": {
+          "type": "object"
+        },
+        "inView": {
+          "type": "object"
+        },
+        "reduced": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "A11yPolicy": {
+      "type": "object",
+      "properties": {
+        "focusVisible": {
+          "type": "boolean",
+          "default": true
+        },
+        "landmarksRequired": {
+          "type": "boolean",
+          "default": true
+        },
+        "contrastTarget": {
+          "type": "string",
+          "enum": [
+            "AA",
+            "AAA"
+          ],
+          "default": "AA"
+        },
+        "keyboardNavigation": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "ActionMap": {
+      "type": "object",
+      "description": "Map action types to adapter runtime handlers.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "handler": {
+            "type": "string",
+            "description": "Adapter handler id or function name (descriptive)."
+          },
+          "argsMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "TokenEmit": {
+      "type": "object",
+      "properties": {
+        "cssVariables": {
+          "type": "boolean",
+          "default": true
+        },
+        "prefix": {
+          "type": "string",
+          "default": "--vs-"
+        },
+        "utilityConfig": {
+          "type": "object",
+          "description": "Utility framework config output mapping (e.g., Tailwind theme keys)",
+          "properties": {
+            "colors": {
+              "type": "boolean",
+              "default": true
+            },
+            "spacing": {
+              "type": "boolean",
+              "default": true
+            },
+            "radius": {
+              "type": "boolean",
+              "default": true
+            },
+            "shadow": {
+              "type": "boolean",
+              "default": true
+            },
+            "zIndex": {
+              "type": "boolean",
+              "default": true
+            },
+            "breakpoints": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+```

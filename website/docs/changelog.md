@@ -11,6 +11,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [0.2.1] - 2025-10-07
+
+### ✨ Added
+- Introduced `adapters.schema.json` to describe framework adapters that translate Core semantics (brief, intent, tokens, layout, motion, a11y, interaction) into concrete stack outputs without constraining the spec.
+
+### 🔧 Changed
+- Preloaded `adapters.schema.json` into the validator for cross-$ref resolution in [validate.js](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/tools/validate.js#L1).
+- Bumped version to 0.2.1 in [VERSION.json](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/VERSION.json#L1).
+
+### 🧰 Docs
+- Regenerated schema docs to include adapters at `website/docs/schemas/adapters.schema.mdx`.
+
+### ✅ Validation
+- All examples continue to validate with `npm run validate`.
+
 ## [0.2.0] - 2025-10-07
 
 ### ✨ Added
@@ -24,18 +39,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
     - `ui-intent.schema.json` – UI intent taxonomy so authors specify purpose (e.g., Action.Primary, Selection.Multiple) instead of concrete widgets.
     - `ui-brief.schema.json` – High-level brief (goals, innovation level, freedoms, perf budgets) to keep spec simple and future-proof.
 - Updated validator to preload cross-referenced schemas by $id:
-  - [validate.js](tools/validate.js:18) preloads tokens/layout/interaction/motion/accessibility/ui-intent/ui-brief for cross-$ref resolution.
+  - [validate.js](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/tools/validate.js#L18) preloads tokens/layout/interaction/motion/accessibility/ui-intent/ui-brief for cross-$ref resolution.
 
 ### 🔄 Changed
-- Refactored [ui-components.schema.json](schemas/ui-components.schema.json:1) to v0.2.0:
+- Refactored [ui-components.schema.json](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/schemas/ui-components.schema.json#L1) to v0.2.0:
   - Added `brief` (references `ui-brief.schema.json`) for high-level guidance.
   - Added `intent` on Page/Section/ComponentInstance (references `ui-intent.schema.json`) so components can be intent-only; `ComponentInstance` now validates with oneOf (`type` or `intent`).
   - Externalized `layout`, `interactions`, `motion`, and `a11y` via schema references.
   - Kept legacy `theme` for backward compatibility; prefer `tokens`.
-- Version bumped in [VERSION.json](VERSION.json:1) to 0.2.0.
+- Version bumped in [VERSION.json](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/VERSION.json#L1) to 0.2.0.
 
 ### 🧰 Docs
-- Regenerated schema docs via [generate-docs.js](tools/generate-docs.js:140) to reflect new/updated schemas and metadata.
+- Regenerated schema docs via [generate-docs.js](https://github.com/andrew-goetz-com/vibespec/blob/HEAD/tools/generate-docs.js#L140) to reflect new/updated schemas and metadata.
 
 ### ✅ Validation
 - All examples validate against the updated schemas via `npm run validate`.

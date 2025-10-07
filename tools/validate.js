@@ -35,6 +35,18 @@ try {
 } catch (e) {
   console.warn('[validate] Optional schema preload failed for design-tokens.schema.json:', e?.message || e);
 }
+try {
+  const uiBrief = loadSchema('ui-brief.schema.json');
+  ajv.addSchema(uiBrief); // $id: https://vibespec.vibecodeunited.com/schema/ui-brief.schema.json
+} catch (e) {
+  console.warn('[validate] Optional schema preload failed for ui-brief.schema.json:', e?.message || e);
+}
+try {
+  const adapters = loadSchema('adapters.schema.json');
+  ajv.addSchema(adapters); // $id: https://vibespec.vibecodeunited.com/schema/adapters.schema.json
+} catch (e) {
+  console.warn('[validate] Optional schema preload failed for adapters.schema.json:', e?.message || e);
+}
 
 // Preload additional schemas referenced by absolute $id so cross-$ref resolution works
 const optionalSchemas = [

@@ -14,11 +14,11 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', '9cf'),
+    component: ComponentCreator('/', 'b05'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '842'),
+        component: ComponentCreator('/', '3e7'),
         routes: [
           {
             path: '/tags',
@@ -67,7 +67,7 @@ export default [
           },
           {
             path: '/',
-            component: ComponentCreator('/', '78f'),
+            component: ComponentCreator('/', 'f4b'),
             routes: [
               {
                 path: '/category/examples',
@@ -144,6 +144,12 @@ export default [
               {
                 path: '/schemas/accessibility',
                 component: ComponentCreator('/schemas/accessibility', 'd41'),
+                exact: true,
+                sidebar: "sidebar"
+              },
+              {
+                path: '/schemas/adapters',
+                component: ComponentCreator('/schemas/adapters', 'aa7'),
                 exact: true,
                 sidebar: "sidebar"
               },

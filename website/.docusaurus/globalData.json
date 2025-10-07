@@ -61,6 +61,11 @@
               "sidebar": "sidebar"
             },
             {
+              "id": "schemas/adapters",
+              "path": "/schemas/adapters",
+              "sidebar": "sidebar"
+            },
+            {
               "id": "schemas/agent",
               "path": "/schemas/agent",
               "sidebar": "sidebar"

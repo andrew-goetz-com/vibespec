@@ -12,13 +12,13 @@
     },
     "config": "5e9f5e1a"
   },
-  "/-9cf": {
+  "/-b05": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/-842": {
+  "/-3e7": {
     "__comp": "a7bd4aaa",
     "__props": "22dd74f7"
   },
@@ -58,7 +58,7 @@
     "__comp": "df203c0f",
     "__props": "d9c2cc41"
   },
-  "/-78f": {
+  "/-f4b": {
     "__comp": "a94703ab"
   },
   "/category/examples-981": {
@@ -112,6 +112,10 @@
   "/schemas/accessibility-d41": {
     "__comp": "17896441",
     "content": "2abbe2a2"
+  },
+  "/schemas/adapters-aa7": {
+    "__comp": "17896441",
+    "content": "9ddfcf59"
   },
   "/schemas/agent-672": {
     "__comp": "17896441",

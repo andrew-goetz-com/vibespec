@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [0.2.1] - 2025-10-07
+
+### ✨ Added
+- Introduced `adapters.schema.json` to describe framework adapters that translate Core semantics (brief, intent, tokens, layout, motion, a11y, interaction) into concrete stack outputs without constraining the spec.
+
+### 🔧 Changed
+- Preloaded `adapters.schema.json` into the validator for cross-$ref resolution in [validate.js](tools/validate.js:1).
+- Bumped version to 0.2.1 in [VERSION.json](VERSION.json:1).
+
+### 🧰 Docs
+- Regenerated schema docs to include adapters at `website/docs/schemas/adapters.schema.mdx`.
+
+### ✅ Validation
+- All examples continue to validate with `npm run validate`.
+
 ## [0.2.0] - 2025-10-07
 
 ### ✨ Added

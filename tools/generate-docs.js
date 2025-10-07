@@ -131,6 +131,15 @@ function rewriteMdLinks(markdown) {
     if (/^(https?:)?\/\//i.test(p1) || /^mailto:/i.test(p1) || /^\//.test(p1) || /^#/.test(p1)) {
       return m;
     }
+    // Support repo-relative links that specify a line suffix like file.ext:123
+    // Convert to GitHub line anchor: <blob-url>#L123
+    const lineMatch = /^(.+):(\d+)$/.exec(p1);
+    if (lineMatch) {
+      const filePath = lineMatch[1];
+      const lineNum = lineMatch[2];
+      const ghWithLine = `${linkToGithub(filePath)}#L${lineNum}`;
+      return `](${ghWithLine})`;
+    }
     // turn repo-relative into GitHub blob links
     const gh = linkToGithub(p1);
     return `](${gh})`;
@@ -360,7 +369,9 @@ function generateChangelog() {
     console.warn('No CHANGELOG.md found, skipping.');
     return;
   }
-  const content = readFileSafe(changelogPath, '');
+  let content = readFileSafe(changelogPath, '');
+  // Rewrite relative links in the changelog to GitHub blob links (including :line → #Lline)
+  content = rewriteMdLinks(content);
   const outPath = path.join(docsDir, 'changelog.md');
   const fm = frontmatter({
     id: 'changelog',
